@@ -10,7 +10,12 @@ export default {
     helperClass: { type: String, default: "form-text text-muted" },
     placeholder: { type: String, default: "" },
     help: String,
-    errors: { type: Object, default: () => { /* intentional */ } },
+    errors: {
+      type: Object,
+      default: () => {
+        /* intentional */
+      },
+    },
     required: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     focus: { type: Boolean, default: false },
