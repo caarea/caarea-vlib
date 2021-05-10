@@ -1,0 +1,62 @@
+<template>
+  <FormRow
+    class="mb-3"
+    :label="label"
+    :label-class="labelClass"
+    :control-class="controlClass"
+    :for-id="getId"
+    :required="required"
+    :inline="labelInline"
+  >
+    <FormSelect
+      :name="name"
+      :label="label"
+      :selected-option="selectedOption"
+      label-select-attr="label"
+      :select-options="selectOptions"
+      :errors="errors"
+      @update:selected-option="updateValue"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :is-loading="isLoading"
+      :allow-empty="allowEmpty"
+      :empty-label="emptyLabel"
+      :empty-value="emptyValue"
+      :multiple="multiple"
+    ></FormSelect>
+  </FormRow>
+</template>
+
+<script>
+import FormElementMixin from "@/components/mixins/FormElementMixin"
+import FormSelect from "../FormSelect"
+import FormRow from "../FormRow/FormRow"
+
+export default {
+  name: "FormRowSelect",
+  mixins: [FormElementMixin],
+  components: { FormRow, FormSelect },
+  props: {
+    selectedOption: [String, Array],
+    // selection options
+    selectOptions: Object,
+    // select options attribute to use for select label
+    labelSelectAttr: { type: String, required: true },
+    // Show/hide the loading spinner
+    isLoading: { type: Boolean, default: false },
+    // allowEmpty
+    allowEmpty: { type: Boolean, default: false },
+    // emtpy value
+    emptyValue: { type: [String, Number], default: null },
+    // emtpy label
+    emptyLabel: { type: String, default: null },
+    // multiple select
+    multiple: { type: Boolean, default: false },
+  },
+  methods: {
+    updateValue(e) {
+      this.$emit("update:selected-option", e)
+    },
+  },
+}
+</script>

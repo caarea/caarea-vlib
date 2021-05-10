@@ -1,0 +1,58 @@
+{
+  "name": "caarea-vlib",
+  "version": "0.1.0",
+  "private": false,
+  "main": "dist/caarea-vlib.umd.min.js",
+  "unpkg": "dist/caarea-vlib.umd.min.js",
+  "jsdelivr": "dist/caarea-vlib.umd.min.js",
+  "author": "Wedge",
+  "license": "MIT",
+  "description": "Vue components for Caarea Solution",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caarea/caarea-vlib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caarea/caarea-vlib.git/issues"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name caarea-vlib src/main.js",
+    "lint": "vue-cli-service lint",
+    "lint:check": "vue-cli-service lint --no-fix",
+   "prepublishOnly": "$npm_execpath build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-multiselect": "^2.1.6",
+    "jquery": "^3.5.1",
+    "vue-i18n": "^8.23.0",
+    "vue-spinner": "^1.0.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-cypress": "^2.11.2",
+    "lint-staged": "^10.5.3",
+    "node-sass": "^5.0.0",
+    "prettier": "^2.2.1",
+    "sass-loader": "^10.1.1",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "peerDependencies": {
+   "vue": "^2.5.21"
+ }
+}
