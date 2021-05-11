@@ -12,6 +12,7 @@ module.exports = {
   parserOptions: {
     parser: "babel-eslint",
   },
+  ignorePatterns: "dist/*",
   rules: {
     semi: [2, "never"],
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
