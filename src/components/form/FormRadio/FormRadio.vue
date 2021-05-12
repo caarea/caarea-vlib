@@ -8,7 +8,6 @@
       :disabled="disabled"
       :data-cy="this.name + '-' + this.option + '-radio'"
       :value="option"
-      @input="onInputChange($event.target.value)"
     />
     <label class="custom-control-label" :for="getId">{{ label }}</label>
   </div>
@@ -29,11 +28,6 @@ export default {
   computed: {
     getId() {
       return "id-" + this.name + "-" + this.option
-    },
-  },
-  methods: {
-    onInputChange(value) {
-      this.$emit("input", value)
     },
   },
 }
