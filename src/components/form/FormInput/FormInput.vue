@@ -12,6 +12,7 @@
       @keyup.enter="$emit('keyboard-enter', $event.target.value)"
       :data-cy="`input-${name}`"
       :ref="`input-${name}`"
+      :disabled="disabled"
     />
     <small v-if="help && !hasError" :class="helperClass">
       {{ help }}

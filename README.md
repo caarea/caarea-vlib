@@ -28,4 +28,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - Clone the caarea-vlib project on your computer
 - Once setup / README is done, run `yarn link`
-- Then, in your front project, run `yarn link caarea-vlib` to use it as a local dependency
+- Then, in your front project, run `yarn link "caarea-vlib"` to use it as a local dependency
+- To stop using the lib as a local dependency, run `npm unlink "caarea-vlib""`
