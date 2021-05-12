@@ -1,5 +1,5 @@
 <template>
-  <div class="row" v-if="inline">
+  <div v-if="inline" class="row">
     <div v-if="label" :class="['mx-auto', ...labelClass]" class="pt-2">
       <label :for="forId" class="mb-0">
         {{ label }}

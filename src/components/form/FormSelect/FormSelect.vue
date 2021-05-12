@@ -9,13 +9,13 @@
       :class="{ 'is-invalid': hasError }"
       :track-by="labelSelectAttr"
       :data-cy="name + '-select'"
-      @change="updateValue"
-      @input="updateValue"
       :disabled="disabled"
       :allow-empty="allowEmpty"
       :loading="isLoading"
       :multiple="multiple"
       :taggable="multiple"
+      @change="updateValue"
+      @input="updateValue"
     />
     <small v-if="help && !error" :class="helperClass">
       {{ help }}
@@ -32,8 +32,8 @@ import FormElementMixin from "@/components/mixins/FormElementMixin"
 
 export default {
   name: "FormSelect",
-  mixins: [FormElementMixin],
   components: { Multiselect },
+  mixins: [FormElementMixin],
   props: {
     selectedOption: [String, Array],
     // selection options
