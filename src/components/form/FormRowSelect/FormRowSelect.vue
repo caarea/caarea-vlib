@@ -15,7 +15,6 @@
       label-select-attr="label"
       :select-options="selectOptions"
       :errors="errors"
-      @update:selected-option="updateValue"
       :placeholder="placeholder"
       :disabled="disabled"
       :is-loading="isLoading"
@@ -23,6 +22,7 @@
       :empty-label="emptyLabel"
       :empty-value="emptyValue"
       :multiple="multiple"
+      @update:selected-option="updateValue"
     ></FormSelect>
   </FormRow>
 </template>
@@ -34,8 +34,8 @@ import FormRow from "../FormRow/FormRow"
 
 export default {
   name: "FormRowSelect",
-  mixins: [FormElementMixin],
   components: { FormRow, FormSelect },
+  mixins: [FormElementMixin],
   props: {
     selectedOption: [String, Array],
     // selection options

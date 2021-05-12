@@ -2,17 +2,17 @@
   <div>
     <input
       :id="getId"
+      :ref="`input-${name}`"
       :name="name"
       :placeholder="placeholder"
       :class="[{ 'is-invalid': error }, inputClass]"
       :type="type"
       :maxlength="maxLength"
       :value="value"
+      :data-cy="`input-${name}`"
+      :disabled="disabled"
       @input="onInput"
       @keyup.enter="$emit('keyboard-enter', $event.target.value)"
-      :data-cy="`input-${name}`"
-      :ref="`input-${name}`"
-      :disabled="disabled"
     />
     <small v-if="help && !hasError" :class="helperClass">
       {{ help }}

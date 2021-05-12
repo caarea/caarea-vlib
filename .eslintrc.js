@@ -4,10 +4,10 @@ module.exports = {
     node: true,
   },
   extends: [
-    "plugin:vue/strongly-recommended",
+    "plugin:vue/recommended",
     "plugin:prettier/recommended",
     "@vue/prettier",
-    // "plugin:cypress/recommended",
+    "plugin:cypress/recommended",
   ],
   parserOptions: {
     parser: "babel-eslint",

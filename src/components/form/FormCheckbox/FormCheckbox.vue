@@ -1,13 +1,13 @@
 <template>
   <div class="custom-control custom-checkbox">
     <input
+      :id="getId"
       type="checkbox"
       :class="['custom-control-input', { 'mouse-pointer': !disabled }]"
-      :id="getId"
       :checked="value"
       :disabled="disabled"
-      @input="$emit('input', $event.target.checked)"
       :data-cy="getId + '-checkbox'"
+      @input="$emit('input', $event.target.checked)"
     />
     <label class="custom-control-label" :for="getId">{{ label }}</label>
   </div>

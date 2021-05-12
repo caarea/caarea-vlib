@@ -1,13 +1,13 @@
 <template>
   <div class="custom-control custom-radio">
     <input
-      type="radio"
+      :id="getId"
       v-model="inputVal"
       :class="['custom-control-input', { 'mouse-pointer': !disabled }]"
-      :id="getId"
       :disabled="disabled"
-      :data-cy="this.name + '-' + this.option + '-radio'"
+      :data-cy="name + '-' + option + '-radio'"
       :value="option"
+      type="radio"
     />
     <label class="custom-control-label" :for="getId">{{ label }}</label>
   </div>
