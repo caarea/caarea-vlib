@@ -1,19 +1,24 @@
 <template>
-  <div class="w-75 row mt-3 justify-content-around">
-    <div v-if="elements.length > 0" class="col-3 p-3 bg-light">
-      <div class="border-bottom pb-3">{{ $t("vehicle_search.refine_the_search") }}</div>
+  <div class="row mt-3">
+    <div v-if="elements.length > 0" class="col-3">
+      <div class="border-bottom p-3 bg-light">
+        {{ $t("vehicle_search.refine_the_search") }}
+      </div>
     </div>
-    <div class="col-8">
-      <div class="bg-light text-secondary row p-3">
-        <span class="col">
+    <div class="col-9">
+      <div class="bg-light text-secondary p-3">
+        <span>
           {{ elements.length }} {{ $t("vehicle_search.results_for") }}
           {{ searchText }}
         </span>
       </div>
-      <div
-        class="row bg-light mt-3 clickable"
-        data-cy="used-vehicle-search-result-content"
-      >
+      <div class="bg-light mt-3" data-cy="used-vehicle-search-result-content">
+        <div
+          v-if="areElementClickable && elements.length > 0"
+          class="p-3 font-weight-bold"
+        >
+          Sélectionnez un des résultats
+        </div>
         <VehicleSearchResultItem
           v-for="element in elements"
           :key="element.hasOwnProperty('id') ? element.id : element"

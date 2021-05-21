@@ -3,10 +3,9 @@
     <div class="border-bottom py-3" :data-cy="`search-by-${searchType}`">
       {{ $t(`vehicle_search.by_${searchType}`) }}
     </div>
-    <div class="row justify-content-center mt-5">
+    <div class="mt-5">
       <FormInput
         v-model="form.searchText"
-        class="col-11"
         :placeholder="$t(`vehicle_search.placeholder.${searchType}`)"
         :max-length="17"
         :errors="usedVehiclesSearchErrors"

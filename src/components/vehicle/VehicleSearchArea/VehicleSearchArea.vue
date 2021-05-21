@@ -1,26 +1,32 @@
 <template>
   <div>
-    <div class="row justify-content-between">
-      <FormUsedVehicleSearch
-        class="col mr-2"
-        search-type="plate"
-        :used-vehicles-search-errors="usedVehiclesSearchErrors"
-        :is-search-loading="isSearchLoading"
-        @submit="onVehicleSearch"
-      ></FormUsedVehicleSearch>
-      <FormUsedVehicleSearch
-        class="col mr-2"
-        search-type="vin"
-        :used-vehicles-search-errors="usedVehiclesSearchErrors"
-        :is-search-loading="isSearchLoading"
-        @submit="onVehicleSearch"
-      ></FormUsedVehicleSearch>
-      <form-manual-search
-        class="col-5"
-        :full-width="true"
-        :is-search-loading="isSearchLoading"
-        @manual-vehicle-search="onVehicleManualSearch"
-      ></form-manual-search>
+    <div class="row">
+      <div class="col-3">
+        <FormUsedVehicleSearch
+          search-type="plate"
+          class="h-100 pl-3"
+          :used-vehicles-search-errors="usedVehiclesSearchErrors"
+          :is-search-loading="isSearchLoading"
+          @submit="onVehicleSearch"
+        ></FormUsedVehicleSearch>
+      </div>
+      <div class="col-3">
+        <FormUsedVehicleSearch
+          search-type="vin"
+          class="h-100 pl-3"
+          :used-vehicles-search-errors="usedVehiclesSearchErrors"
+          :is-search-loading="isSearchLoading"
+          @submit="onVehicleSearch"
+        ></FormUsedVehicleSearch>
+      </div>
+      <div class="col-6">
+        <form-manual-search
+          class="h-100 pl-3"
+          :full-width="true"
+          :is-search-loading="isSearchLoading"
+          @manual-vehicle-search="onVehicleManualSearch"
+        ></form-manual-search>
+      </div>
     </div>
   </div>
 </template>

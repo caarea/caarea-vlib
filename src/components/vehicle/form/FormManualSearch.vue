@@ -3,7 +3,7 @@
     <div class="border-bottom py-3" data-cy="search-by-text">
       {{ $t(`vehicle_search.by_manual_search`) }}
     </div>
-    <div class="row justify-content-center mt-5 w-100">
+    <div class="mt-5 w-100">
       <FormRowInput
         v-model="form.searchText"
         data-cy="search-input-manual"
