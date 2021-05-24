@@ -7,6 +7,7 @@
           class="h-100 pl-3"
           :used-vehicles-search-errors="usedVehiclesSearchErrors"
           :is-search-loading="isSearchLoading"
+          :is-immat-mocked="isImmatMocked"
           @submit="onVehicleSearch"
         ></FormUsedVehicleSearch>
       </div>
@@ -16,6 +17,7 @@
           class="h-100 pl-3"
           :used-vehicles-search-errors="usedVehiclesSearchErrors"
           :is-search-loading="isSearchLoading"
+          :is-immat-mocked="isImmatMocked"
           @submit="onVehicleSearch"
         ></FormUsedVehicleSearch>
       </div>
@@ -44,6 +46,7 @@ export default {
   props: {
     usedVehiclesSearchErrors: Object,
     isSearchLoading: { type: Boolean, required: true },
+    isImmatMocked: { type: Boolean, default: false },
   },
   methods: {
     async onVehicleSearch(searchType, searchText) {

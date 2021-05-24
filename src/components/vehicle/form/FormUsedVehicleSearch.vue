@@ -44,6 +44,7 @@ export default {
     searchType: String,
     usedVehiclesSearchErrors: Object,
     isSearchLoading: { type: Boolean, required: true },
+    isImmatMocked: { type: Boolean, default: false },
   },
   data() {
     return {
@@ -54,7 +55,7 @@ export default {
   },
   computed: {
     searchHelp() {
-      if (process.env.NODE_ENV === "development") {
+      if (this.isImmatMocked) {
         return this.isVinSelected
           ? "'vinvalid' pour simuler un n° de série valide"
           : "'aa000aa' pour simuler une plaque valide"

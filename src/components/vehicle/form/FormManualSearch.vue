@@ -15,6 +15,7 @@
         :errors="{}"
         :class="widthClass"
         :help="$t('vehicle_search.help.velastic')"
+        @keyboard-enter="onSubmitButton"
       ></FormRowInput>
     </div>
     <div class="p-2 mt-auto mx-auto">
