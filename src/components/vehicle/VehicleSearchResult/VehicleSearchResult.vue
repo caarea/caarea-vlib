@@ -6,19 +6,16 @@
       </div>
     </div>
     <div class="col-9">
-      <div class="bg-light text-secondary p-3">
-        <span>
+      <div class="bg-light p-3 d-flex justify-content-between">
+        <div v-if="areElementClickable && elements.length > 0" class="font-weight-bold">
+          {{ $t("vehicle_search.pick_version") }}
+        </div>
+        <div class="text-secondary">
           {{ elements.length }} {{ $t("vehicle_search.results_for") }}
           {{ searchText }}
-        </span>
+        </div>
       </div>
       <div class="bg-light mt-3" data-cy="used-vehicle-search-result-content">
-        <div
-          v-if="areElementClickable && elements.length > 0"
-          class="p-3 font-weight-bold"
-        >
-          Sélectionnez un des résultats
-        </div>
         <VehicleSearchResultItem
           v-for="element in elements"
           :key="element.hasOwnProperty('id') ? element.id : element"
@@ -37,7 +34,6 @@
 
 <script>
 import VehicleSearchResultItem from "@/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem"
-import { mapGetters } from "vuex"
 
 export default {
   name: "VehicleSearchResult",

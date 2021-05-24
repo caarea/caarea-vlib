@@ -14,6 +14,7 @@ import {
   VehicleSearchArea,
   VehicleSearchResult,
   VehicleSearchResultItem,
+  VehicleSearchResultCard,
 } from "./vehicle"
 
 export {
@@ -29,4 +30,5 @@ export {
   VehicleSearchArea,
   VehicleSearchResult,
   VehicleSearchResultItem,
+  VehicleSearchResultCard,
 }
