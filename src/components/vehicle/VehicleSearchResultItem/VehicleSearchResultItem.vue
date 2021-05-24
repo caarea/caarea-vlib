@@ -46,20 +46,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.result {
-  $resultsize: 80px;
-
-  &-name {
-    font-size: 1.3rem;
-  }
-
-  &-image,
-  img {
-    height: $resultsize;
-    width: $resultsize;
-    background-color: white;
-  }
-}
-</style>
