@@ -15,6 +15,7 @@
       :type="type"
       :value="value"
       @input="$emit('input', $event)"
+      @keyboard-enter="$emit('keyboard-enter', $event)"
     ></FormInput>
   </FormRow>
 </template>

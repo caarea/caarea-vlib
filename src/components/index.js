@@ -10,6 +10,13 @@ import {
   FormSelect,
 } from "./form"
 
+import {
+  VehicleSearchArea,
+  VehicleSearchResult,
+  VehicleSearchResultItem,
+  VehicleSearchResultCard,
+} from "./vehicle"
+
 export {
   FormAsyncSelect,
   FormCheckbox,
@@ -20,4 +27,8 @@ export {
   FormRowInput,
   FormRowSelect,
   FormTextArea,
+  VehicleSearchArea,
+  VehicleSearchResult,
+  VehicleSearchResultItem,
+  VehicleSearchResultCard,
 }
