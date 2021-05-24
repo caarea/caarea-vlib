@@ -22,9 +22,9 @@ fi
 
 set -e
 echo "### LINT"
-yarn run lint
-echo "### TESTS CYPRESS"
-#yarn run test:cy
+yarn lint
+echo "### BUILD"
+yarn build
 
 
 

@@ -44,6 +44,11 @@ export default {
       debouncedChanges: null,
     }
   },
+  mounted() {
+    if (this.debounceInput) {
+      this.debouncedChanges = _.debounce(this.emitUpdate, this.debounceTimeout)
+    }
+  },
   methods: {
     emitUpdate(value) {
       this.$emit("input", value)
@@ -55,11 +60,6 @@ export default {
         this.emitUpdate(e.target.value)
       }
     },
-  },
-  mounted() {
-    if (this.debounceInput) {
-      this.debouncedChanges = _.debounce(this.emitUpdate, this.debounceTimeout)
-    }
   },
 }
 </script>

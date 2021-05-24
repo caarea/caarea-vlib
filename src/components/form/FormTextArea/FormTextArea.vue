@@ -2,6 +2,7 @@
   <div>
     <textarea
       :id="getId"
+      :ref="`input-${name}`"
       :name="name"
       :placeholder="placeholder"
       :class="inputClass"
@@ -9,9 +10,8 @@
       :value="value"
       :rows="rows"
       :cols="columns"
-      @input="onInput"
       :data-cy="`textarea-${name}`"
-      :ref="`input-${name}`"
+      @input="onInput"
     />
   </div>
 </template>
@@ -37,6 +37,11 @@ export default {
       debouncedChanges: null,
     }
   },
+  mounted() {
+    if (this.debounceInput) {
+      this.debouncedChanges = _.debounce(this.emitUpdate, this.debounceTimeout)
+    }
+  },
   methods: {
     emitUpdate(value) {
       this.$emit("input", value)
@@ -48,11 +53,6 @@ export default {
         this.emitUpdate(e.target.value)
       }
     },
-  },
-  mounted() {
-    if (this.debounceInput) {
-      this.debouncedChanges = _.debounce(this.emitUpdate, this.debounceTimeout)
-    }
   },
 }
 </script>
