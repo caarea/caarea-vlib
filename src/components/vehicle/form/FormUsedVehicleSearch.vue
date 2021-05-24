@@ -57,7 +57,7 @@ export default {
     searchHelp() {
       if (this.isImmatMocked) {
         return this.isVinSelected
-          ? "'vinvalid' pour simuler un n° de série valide"
+          ? "'validvin' pour simuler un n° de série valide"
           : "'aa000aa' pour simuler une plaque valide"
       }
       return ""
