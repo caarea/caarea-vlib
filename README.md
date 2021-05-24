@@ -27,10 +27,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Use Caarea-vlib in dev mode
 
 - Clone the caarea-vlib project on your computer
-- Build the lib : `yarn run build`
+- Build the lib : `yarn build`
 - Once setup / README is done, run `yarn link`
 - Then, in your front project, run `yarn link "caarea-vlib"` to use it as a local dependency
 - To stop using the lib as a local dependency, run `yarn unlink "caarea-vlib""`
 
 ### Build the lib
-- Run : `yarn run build`
+- Run : `yarn build`

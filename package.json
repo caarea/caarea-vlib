@@ -24,8 +24,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name caarea-vlib src/main.js",
     "lint": "vue-cli-service lint",
-    "lint:check": "vue-cli-service lint --no-fix",
-    "prepublishOnly": "$npm_execpath build"
+    "lint:check": "vue-cli-service lint --no-fix"
   },
   "dependencies": {
     "core-js": "^3.6.5",
