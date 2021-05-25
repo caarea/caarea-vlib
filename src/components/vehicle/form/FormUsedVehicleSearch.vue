@@ -1,12 +1,12 @@
 <template>
   <div class="bg-light d-flex flex-column align-items-start">
     <div class="border-bottom py-3" :data-cy="`search-by-${searchType}`">
-      {{ $t(`vehicle_search.by_${searchType}`) }}
+      {{ $t(`caareavlib.vehicle.search.by_${searchType}`) }}
     </div>
     <div class="mt-5">
       <FormInput
         v-model="form.searchText"
-        :placeholder="$t(`vehicle_search.placeholder.${searchType}`)"
+        :placeholder="$t(`caareavlib.vehicle.search.placeholder.${searchType}`)"
         :max-length="17"
         :errors="usedVehiclesSearchErrors"
         :name="searchType"
@@ -29,7 +29,7 @@
           role="status"
           aria-hidden="true"
         ></span>
-        {{ $t("vehicle_search.button.search") }}
+        {{ $t("caareavlib.vehicle.search.button.search") }}
       </button>
     </div>
   </div>
@@ -37,6 +37,7 @@
 
 <script>
 import FormInput from "@/components/form/FormInput/FormInput"
+
 export default {
   name: "FormUsedVehicleSearch",
   components: { FormInput },

@@ -1,0 +1,42 @@
+{
+  "search": {
+    "title": "Sélectionnez un véhicule",
+    "by_plate": "Par plaque d'immatriculation",
+    "by_vin": "Par numéro de chassis",
+    "by_manual_search": "Par recherche directe",
+    "brand_and_model": "Marque / modèle",
+    "refine_the_search": "Affinez la recherche",
+    "placeholder": {
+      "plate": "XX-999-XX",
+      "vin": "Saisissez le n° de serie VIN"
+    },
+    "button": {
+      "search": "Rechercher",
+      "modify_search": "Modifier la recherche",
+      "modify_version": "Modifier la version",
+      "validate": "Valider",
+      "next": "Suivant"
+    },
+    "help": {
+      "velastic": "ex: Volkswagen Touran 1.5 TSI EVO Lounge 7 places"
+    },
+    "error": {
+      "number": "Veuillez renseigner un nombre valide"
+    },
+    "pick_version": "Sélectionnez un des résultats",
+    "results_for": "résultats pour",
+    "no_results": "Aucun résultat",
+    "km": "Kilométrage",
+    "age": "Age",
+    "year": "Année",
+    "month": "Mois",
+    "price": "Prix",
+    "automatic": "Automatique",
+    "manual": "Manuelle",
+    "essence": "essence",
+    "diesel": "diesel",
+    "electrique": "électrique",
+    "hybride": "hybride",
+    "horsepower": "Cv"
+  }
+}

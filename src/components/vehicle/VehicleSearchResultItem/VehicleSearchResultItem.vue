@@ -7,16 +7,16 @@
       <img :src="image" alt="image" />
     </div>
     <div class="col-5 result-name" data-cy="search-result-name">
-      {{ vehicle.label }}
+      {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.version }}
     </div>
     <div class="col-2 result-details text-center" data-cy="search-result-details">
-      {{ $t(`vehicle_search.${vehicle.energy}`) || "--" | capitalize }}
+      {{ $t(`caareavlib.vehicle.search.${vehicle.energy}`) || "--" | capitalize }}
     </div>
     <div class="col-2 result-details text-center" data-cy="search-result-details">
       {{ `${vehicle.fiscal_hp} Cv` || "--" }}
     </div>
     <div class="col-2 result-details text-center" data-cy="search-result-details">
-      {{ $t(`vehicle_search.${vehicle.transmission}`) || "--" | capitalize }}
+      {{ $t(`caareavlib.vehicle.search.${vehicle.transmission}`) || "--" | capitalize }}
     </div>
     <div v-if="canValidate" class="col-1 ml-auto text-right icon-fade">
       <i class="icon-chevron-right font-size-40" aria-hidden="true"></i>

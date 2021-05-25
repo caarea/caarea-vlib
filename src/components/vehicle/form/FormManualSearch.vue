@@ -1,7 +1,7 @@
 <template>
   <div class="bg-light d-flex flex-column align-items-start">
     <div class="border-bottom py-3" data-cy="search-by-text">
-      {{ $t(`vehicle_search.by_manual_search`) }}
+      {{ $t(`caareavlib.vehicle.search.by_manual_search`) }}
     </div>
     <div class="mt-5 w-100">
       <FormRowInput
@@ -11,10 +11,10 @@
         name="velastic"
         type="text"
         :max-length="64"
-        :label="$t('vehicle_search.brand_and_model')"
+        :label="$t('caareavlib.vehicle.search.brand_and_model')"
         :errors="{}"
         :class="widthClass"
-        :help="$t('vehicle_search.help.velastic')"
+        :help="$t('caareavlib.vehicle.search.help.velastic')"
         @keyboard-enter="onSubmitButton"
       ></FormRowInput>
     </div>
@@ -32,7 +32,7 @@
           role="status"
           aria-hidden="true"
         ></span>
-        {{ $t("vehicle_search.button.search") }}
+        {{ $t("caareavlib.vehicle.search.button.search") }}
       </button>
     </div>
   </div>
