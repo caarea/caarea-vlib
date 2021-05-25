@@ -48,15 +48,17 @@ export default {
         text +=
           " " +
           this.$options.filters.capitalize(
-            this.$t(`vehicle_search.${this.vehicle.energy}`)
+            this.$t(`caareavlib.vehicle.search.${this.vehicle.energy}`)
           )
       if (this.vehicle.hasOwnProperty("fiscal_hp") && this.vehicle.fiscal_hp)
-        text += ` ${this.vehicle.fiscal_hp} ${this.$t("vehicle_search.horsepower")}`
+        text += ` ${this.vehicle.fiscal_hp} ${this.$t(
+          "caareavlib.vehicle.search.horsepower"
+        )}`
       if (this.vehicle.hasOwnProperty("transmission") && this.vehicle.transmission)
         text +=
           " " +
           this.$options.filters.capitalize(
-            this.$t(`vehicle_search.${this.vehicle.transmission}`)
+            this.$t(`caareavlib.vehicle.search.${this.vehicle.transmission}`)
           )
       return text
     },
