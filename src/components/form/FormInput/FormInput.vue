@@ -48,6 +48,7 @@ export default {
     if (this.debounceInput) {
       this.debouncedChanges = _.debounce(this.emitUpdate, this.debounceTimeout)
     }
+    this.setFocus()
   },
   methods: {
     emitUpdate(value) {

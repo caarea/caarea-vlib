@@ -14,6 +14,13 @@
       :errors="errors"
       :type="type"
       :value="value"
+      :debounce-input="debounceInput"
+      :debounce-timeout="debounceTimeout"
+      :placeholder="placeholder"
+      :help="help"
+      :focus="focus"
+      :required="required"
+      :disabled="disabled"
       @input="$emit('input', $event)"
       @keyboard-enter="$emit('keyboard-enter', $event)"
     ></FormInput>
@@ -33,6 +40,8 @@ export default {
     value: [Number, String],
     type: { type: String, default: "text" },
     maxLength: { type: Number, default: null },
+    debounceInput: { type: Boolean, default: false },
+    debounceTimeout: { type: Number, default: 1000 },
   },
 }
 </script>
