@@ -40,11 +40,13 @@ export default {
       return null
     },
   },
-  mounted() {
-    if (this.focus === true) {
-      this.$nextTick(() => {
-        this.$refs[`input-${this.name}`].focus()
-      })
-    }
+  methods: {
+    setFocus() {
+      if (this.focus === true) {
+        this.$nextTick(() => {
+          this.$refs[`input-${this.name}`].focus()
+        })
+      }
+    },
   },
 }
