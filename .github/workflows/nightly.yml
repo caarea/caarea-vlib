@@ -1,0 +1,57 @@
+name: Nightly
+on:
+  push:
+    branches:
+      - sonar
+  schedule:
+    - cron: '0 2 * * *' # run at 2 AM UTC
+    branches:
+      - main
+
+jobs:
+  nightly:
+    name: Sonar Scan and Tests on latest dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout dev repository
+        uses: actions/checkout@v2
+
+      - name: SonarQube Scan
+        uses: kitabisa/sonarqube-action@master
+        with:
+          host: ${{ secrets.SONARQUBE_HOST }}
+          login: ${{ secrets.SONARQUBE_TOKEN }}
+
+#      - name: Yarn upgrade dependencies
+#        run: yarn upgrade --latest
+#
+#      - name: Yarn downgrade only sass-loader
+#        run: yarn add sass-loader@^10.1.1
+#
+#      - name: Run Jest test
+#        run: yarn run test:unit
+#
+#      - name: Cypress run
+#        uses: cypress-io/github-action@v2
+#        with:
+#          start: yarn run serve
+#          wait-on: http://localhost:8080/
+#        env:
+#          LANG: fr_FR.UTF-8
+#          CYPRESS_BASE_URL: http://localhost:8080
+#          VUE_APP_DEV_SERVER_DOMAIN: localhost
+#          VUE_APP_DEV_SERVER_PORT: 8080
+#          VUE_APP_ENDPOINT: http://api.cs.test:8001/api/
+#          VUE_APP_API_SECRET: a-secret-api-key
+
+      - name: Slack Notification
+        uses: lazy-actions/slatify@master
+        if: ${{ failure() }}
+        with:
+          type: ${{ job.status }}
+          job_name: '*Nightly Upgrade*'
+          url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          username: Github Actions
+          commit: true
+          token: ${{ secrets.GITHUB_TOKEN }}
