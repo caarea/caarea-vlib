@@ -28,7 +28,7 @@
     "no_results": "Aucun résultat",
     "km": "Kilométrage",
     "age": "Age",
-    "year": "Année",
+    "model_year": "Année",
     "month": "Mois",
     "price": "Prix",
     "automatic": "Automatique",
@@ -37,6 +37,14 @@
     "diesel": "diesel",
     "electrique": "électrique",
     "hybride": "hybride",
-    "horsepower": "Cv"
+    "horsepower": "Cv",
+    "erase_filters": "Effacer les filtres",
+    "make": "Marque",
+    "model": "Modèle",
+    "energy": "Énergie",
+    "fiscal_hp": "Puissance fiscale",
+    "all_make": "Toutes",
+    "all_model": "Tous",
+    "all_energy": "Toutes"
   }
 }

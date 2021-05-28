@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="hasClearButton ? 'input-group d-flex align-items-center' : ''">
     <input
       :id="getId"
       :ref="`input-${name}`"
@@ -14,6 +14,11 @@
       @input="onInput"
       @keyup.enter="$emit('keyboard-enter', $event.target.value)"
     />
+    <div v-if="hasClearButton && value" class="input-group-append">
+      <button class="btn btn-icon font-size-22 text-secondary">
+        <i class="icon-cross" aria-hidden="true"></i>
+      </button>
+    </div>
     <small v-if="help && !hasError" :class="helperClass">
       {{ help }}
     </small>
@@ -38,6 +43,7 @@ export default {
     name: { type: String, required: true },
     debounceInput: { type: Boolean, default: false },
     debounceTimeout: { type: Number, default: 1000 },
+    hasClearButton: { type: Boolean, default: false },
   },
   data() {
     return {

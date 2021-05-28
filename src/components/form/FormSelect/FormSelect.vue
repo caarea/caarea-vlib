@@ -85,6 +85,8 @@ export default {
   },
   methods: {
     updateValue(e) {
+      // onChange emits null if new value is same as previous one -> code below would fail
+      if (e === null) return this.$emit("update:selected-option", e)
       if (this.multiple === false) {
         return this.$emit("update:selected-option", e.key)
       }

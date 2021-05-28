@@ -1,24 +1,38 @@
 <template>
-  <div class="bg-light d-flex flex-column align-items-start">
-    <div class="border-bottom py-3" data-cy="search-by-text">
+  <div class="bg-light d-flex flex-column">
+    <div class="border-bottom pb-3 mb-3" data-cy="search-by-text">
       {{ $t(`caareavlib.vehicle.search.by_manual_search`) }}
     </div>
-    <div class="mt-5 w-100">
+    <div>
       <FormRowInput
-        v-model="form.searchText"
+        v-model="value.manual"
         data-cy="search-input-manual"
         class="col-11"
-        name="velastic"
+        name="manual"
         type="text"
         :max-length="64"
         :label="$t('caareavlib.vehicle.search.brand_and_model')"
-        :errors="{}"
+        :errors="errors"
         :class="widthClass"
         :help="$t('caareavlib.vehicle.search.help.velastic')"
         @keyboard-enter="onSubmitButton"
+        @input="onInput"
+      ></FormRowInput>
+      <FormRowInput
+        v-model="value.filters.model_year.value"
+        data-cy="search-input-year"
+        class="col-11"
+        name="model_year"
+        type="text"
+        :max-length="4"
+        :label="$t('caareavlib.vehicle.search.model_year')"
+        :errors="'filters' in errors ? errors.filters : {}"
+        :class="widthClass"
+        @keyboard-enter="onSubmitButton"
+        @input="onInput"
       ></FormRowInput>
     </div>
-    <div class="p-2 mt-auto mx-auto">
+    <div class="p-2 text-center mt-auto">
       <button
         type="button"
         class="btn btn-primary mt-4"
@@ -47,32 +61,28 @@ export default {
   props: {
     fullWidth: { type: Boolean, default: false },
     isSearchLoading: { type: Boolean, required: true },
-  },
-  data() {
-    return {
-      form: {
-        searchText: "",
-        yearSearchText: "",
+    value: { type: Object, required: true },
+    errors: {
+      type: Object,
+      default: () => {
+        return {}
       },
-      isLoading: false,
-    }
+    },
   },
   computed: {
     isButtonDisable() {
-      return this.form.searchText === ""
+      return this.value.manual === ""
     },
     widthClass() {
       return this.fullWidth ? "col-12" : "col-10"
     },
   },
   methods: {
+    onInput() {
+      this.$emit("input", this.value)
+    },
     onSubmitButton() {
-      this.$store.dispatch("vehicle/resetVelasticSearch")
-      this.$emit(
-        "manual-vehicle-search",
-        this.form.searchText,
-        this.form.yearSearchText
-      )
+      this.$emit("manual-vehicle-search")
     },
   },
 }

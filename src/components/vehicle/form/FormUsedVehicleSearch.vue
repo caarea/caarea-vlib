@@ -1,21 +1,22 @@
 <template>
-  <div class="bg-light d-flex flex-column align-items-start">
-    <div class="border-bottom py-3" :data-cy="`search-by-${searchType}`">
+  <div class="bg-light d-flex flex-column">
+    <div class="border-bottom pb-3 mb-3" :data-cy="`search-by-${searchType}`">
       {{ $t(`caareavlib.vehicle.search.by_${searchType}`) }}
     </div>
-    <div class="mt-5">
+    <div>
       <FormInput
-        v-model="form.searchText"
+        :value="value"
         :placeholder="$t(`caareavlib.vehicle.search.placeholder.${searchType}`)"
         :max-length="17"
         :errors="usedVehiclesSearchErrors"
         :name="searchType"
         :data-cy="`search-input-${searchType}`"
         :help="searchHelp"
+        @input="onInput"
         @keyboard-enter="onSubmitButton"
       ></FormInput>
     </div>
-    <div class="p-2 mt-auto mx-auto">
+    <div class="p-2 text-center mt-auto">
       <button
         type="button"
         class="btn btn-primary mt-4"
@@ -39,20 +40,14 @@
 import FormInput from "@/components/form/FormInput/FormInput"
 
 export default {
-  name: "FormUsedVehicleSearch",
+  cname: "FormUsedVehicleSearch",
   components: { FormInput },
   props: {
     searchType: String,
+    value: String,
     usedVehiclesSearchErrors: Object,
     isSearchLoading: { type: Boolean, required: true },
     isImmatMocked: { type: Boolean, default: false },
-  },
-  data() {
-    return {
-      form: {
-        searchText: "",
-      },
-    }
   },
   computed: {
     searchHelp() {
@@ -67,12 +62,15 @@ export default {
       return this.searchType === "vin"
     },
     isButtonDisable() {
-      return this.form.searchText === ""
+      return this.value === ""
     },
   },
   methods: {
-    async onSubmitButton() {
-      this.$emit("submit", this.searchType, this.form.searchText)
+    onInput(value) {
+      this.$emit("input", value)
+    },
+    onSubmitButton() {
+      this.$emit("submit", this.searchType, this.value)
     },
   },
 }
