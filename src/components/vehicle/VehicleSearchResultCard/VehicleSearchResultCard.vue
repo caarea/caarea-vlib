@@ -60,6 +60,8 @@ export default {
           this.$options.filters.capitalize(
             this.$t(`caareavlib.vehicle.search.${this.vehicle.transmission}`)
           )
+      if (this.vehicle.hasOwnProperty("year") && this.vehicle.year)
+        text += ` ${this.vehicle.year}`
       return text
     },
   },

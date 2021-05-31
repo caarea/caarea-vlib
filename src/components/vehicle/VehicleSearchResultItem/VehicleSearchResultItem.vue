@@ -1,35 +1,40 @@
 <template>
   <div
     class="vehicle-list-item-border row no-gutters justify-content-between align-items-center w-100 py-3"
-    z
     @click="onButtonClick"
   >
     <div v-if="image" class="col-2">
       <img :src="image" alt="image" />
     </div>
-    <div class="col-5 result-name" data-cy="search-result-name">
+    <div class="col-4 result-name" data-cy="search-result-name">
       {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.version }}
     </div>
-    <div class="col-2 result-details text-center" data-cy="search-result-details">
+    <div class="col-2 result-details text-center" data-cy="search-result-item-energy">
       {{
         vehicle.energy
           ? $t(`caareavlib.vehicle.search.${vehicle.energy}`)
           : "--" | capitalize
       }}
     </div>
-    <div class="col-2 result-details text-center" data-cy="search-result-details">
+    <div class="col-1 result-details text-center" data-cy="search-result-item-fiscalhp">
       {{
         vehicle.fiscal_hp
           ? `${vehicle.fiscal_hp} ${$t("caareavlib.vehicle.search.horsepower")}`
           : "--"
       }}
     </div>
-    <div class="col-2 result-details text-center" data-cy="search-result-details">
+    <div
+      class="col-2 result-details text-center"
+      data-cy="search-result-item-transmission"
+    >
       {{
         vehicle.transmission
           ? $t(`caareavlib.vehicle.search.${vehicle.transmission}`)
           : "--" | capitalize
       }}
+    </div>
+    <div class="col-2 result-details text-center" data-cy="search-result-item-year">
+      {{ vehicle.year ? vehicle.year : "--" }}
     </div>
     <div v-if="canValidate" class="col-1 ml-auto text-right icon-fade">
       <i class="icon-chevron-right font-size-40" aria-hidden="true"></i>
