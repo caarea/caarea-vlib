@@ -36,6 +36,7 @@
     "essence": "gasoline",
     "diesel": "diesel",
     "electrique": "electric",
+    "gpl": "lpg",
     "hybride": "hybrid",
     "horsepower": "Hp",
     "erase_filters": "Erase filters",

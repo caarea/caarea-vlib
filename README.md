@@ -53,7 +53,9 @@ export default {
 - Build the lib : `yarn build`
 - Once setup / README is done, run `yarn link`
 - Then, in your front project, run `yarn link "caarea-vlib"` to use it as a local dependency
-- To stop using the lib as a local dependency, run `yarn unlink "caarea-vlib"`, then run `yarn install --force` to reinstall the lib. You might have to re-serve your app.
-
+- To stop using the lib as a local dependency : 
+  - in the caarea-vlib project : run `yarn unlink`
+  - in your front project : run `yarn unlink "caarea-vlib"`, then run `yarn install --force` to reinstall the lib. You might have to re-serve your app.
+    
 ### Build the lib
 - Run : `yarn build`
