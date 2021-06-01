@@ -5,45 +5,13 @@
       class="col-3"
       data-cy="vehicle-search-filters"
     >
-      <div class="bg-light p-3 d-flex flex-column">
-        <div class="border-bottom mb-4 pb-3">
-          {{ $t("caareavlib.vehicle.search.refine_the_search") }}
-        </div>
-        <div v-for="criteria in Object.keys(value.filters)" :key="criteria">
-          <div class="my-1">{{ $t(`caareavlib.vehicle.search.${criteria}`) }}</div>
-          <FormSelect
-            v-if="value.filters[criteria].inputType === 'select'"
-            :name="`filter-${criteria}`"
-            :key="criteria"
-            :select-options="value.filters[criteria].choices"
-            :selected-option.sync="value.filters[criteria].value"
-            label-select-attr="label"
-            :allow-empty="true"
-            :empty-label="$t(`caareavlib.vehicle.search.all_${criteria}`)"
-            @update:selected-option="
-              $emit('filter-input', criteria, value.filters[criteria])
-            "
-          ></FormSelect>
-          <FormInput
-            v-else
-            v-model="value.filters[criteria].value"
-            :label="$t('caareavlib.vehicle.search.model_year')"
-            :debounce-input="true"
-            :name="`filter-${criteria}`"
-            :label-class="['col-2']"
-            :type="value.filters[criteria].inputType"
-            :errors="filterErrors(criteria)"
-            @input="$emit('filter-input', criteria, value.filters[criteria])"
-          ></FormInput>
-        </div>
-        <div
-          class="btn btn-outline-secondary mx-4 mt-3 font-size-12"
-          data-cy="vehicle-reset-filters"
-          @click.prevent="onEraseFilters"
-        >
-          {{ $t("caareavlib.vehicle.search.erase_filters") }}
-        </div>
-      </div>
+      <FormVehicleFilters
+        v-model="value"
+        :errors="errors"
+        @filter-input="onFilterInput"
+        @reset-filters="onEraseFilters"
+        class="bg-light"
+      ></FormVehicleFilters>
     </div>
     <div class="col-9">
       <div class="bg-light p-3 d-flex justify-content-between">
@@ -75,15 +43,13 @@
 
 <script>
 import VehicleSearchResultItem from "@/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem"
-import FormInput from "@/components/form/FormInput/FormInput"
-import FormSelect from "@/components/form/FormSelect/FormSelect"
+import FormVehicleFilters from "@/components/vehicle/form/FormVehicleFilters"
 
 export default {
   name: "VehicleSearchResult",
   components: {
-    FormSelect,
-    FormInput,
     VehicleSearchResultItem,
+    FormVehicleFilters,
   },
   props: {
     value: { type: Object, required: true },
@@ -113,18 +79,10 @@ export default {
     }
   },
   methods: {
-    filterErrors(criteria) {
-      let err = {}
-      if ("filters" in this.errors && criteria in this.errors.filters) {
-        err[`filter-${criteria}`] = this.errors.filters[criteria]
-      }
-      return err
+    onFilterInput(criteria, value) {
+      this.$emit("filter-input", criteria, value)
     },
     onEraseFilters() {
-      for (let filter in this.value.filters) {
-        // noinspection JSUnfilteredForInLoop
-        this.value.filters[filter].value = null
-      }
       this.$emit("input", this.value)
       this.$emit("reset-filters")
     },

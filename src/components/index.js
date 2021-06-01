@@ -15,6 +15,7 @@ import {
   VehicleSearchResult,
   VehicleSearchResultItem,
   VehicleSearchResultCard,
+  FormVehicleFilters,
 } from "./vehicle"
 
 export {
@@ -31,4 +32,5 @@ export {
   VehicleSearchResult,
   VehicleSearchResultItem,
   VehicleSearchResultCard,
+  FormVehicleFilters,
 }

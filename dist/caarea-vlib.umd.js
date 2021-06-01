@@ -21108,6 +21108,7 @@ __webpack_require__.d(components_namespaceObject, "VehicleSearchArea", function(
 __webpack_require__.d(components_namespaceObject, "VehicleSearchResult", function() { return vehicle_VehicleSearchResult; });
 __webpack_require__.d(components_namespaceObject, "VehicleSearchResultItem", function() { return vehicle_VehicleSearchResultItem; });
 __webpack_require__.d(components_namespaceObject, "VehicleSearchResultCard", function() { return vehicle_VehicleSearchResultCard; });
+__webpack_require__.d(components_namespaceObject, "FormVehicleFilters", function() { return FormVehicleFilters; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -22836,12 +22837,12 @@ var VehicleSearchArea_component = normalizeComponent(
 // CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchArea/index.js
 
 /* harmony default export */ var vehicle_VehicleSearchArea = (VehicleSearchArea);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=template&id=75fbe65f&
-var VehicleSearchResultvue_type_template_id_75fbe65f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row mt-3"},[(_vm.elements !== null || _vm.errors !== {})?_c('div',{staticClass:"col-3",attrs:{"data-cy":"vehicle-search-filters"}},[_c('div',{staticClass:"bg-light p-3 d-flex flex-column"},[_c('div',{staticClass:"border-bottom mb-4 pb-3"},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.refine_the_search"))+" ")]),_vm._l((Object.keys(_vm.value.filters)),function(criteria){return _c('div',{key:criteria},[_c('div',{staticClass:"my-1"},[_vm._v(_vm._s(_vm.$t(("caareavlib.vehicle.search." + criteria))))]),(_vm.value.filters[criteria].inputType === 'select')?_c('FormSelect',{key:criteria,attrs:{"name":("filter-" + criteria),"select-options":_vm.value.filters[criteria].choices,"selected-option":_vm.value.filters[criteria].value,"label-select-attr":"label","allow-empty":true,"empty-label":_vm.$t(("caareavlib.vehicle.search.all_" + criteria))},on:{"update:selectedOption":function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},"update:selected-option":[function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}]}}):_c('FormInput',{attrs:{"label":_vm.$t('caareavlib.vehicle.search.model_year'),"debounce-input":true,"name":("filter-" + criteria),"label-class":['col-2'],"type":_vm.value.filters[criteria].inputType,"errors":_vm.filterErrors(criteria)},on:{"input":function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}},model:{value:(_vm.value.filters[criteria].value),callback:function ($$v) {_vm.$set(_vm.value.filters[criteria], "value", $$v)},expression:"value.filters[criteria].value"}})],1)}),_c('div',{staticClass:"btn btn-outline-secondary mx-4 mt-3 font-size-12",attrs:{"data-cy":"vehicle-reset-filters"},on:{"click":function($event){$event.preventDefault();return _vm.onEraseFilters($event)}}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.erase_filters"))+" ")])],2)]):_vm._e(),_c('div',{staticClass:"col-9"},[_c('div',{staticClass:"bg-light p-3 d-flex justify-content-between"},[(_vm.areElementClickable && _vm.elements.length > 0)?_c('div',{staticClass:"font-weight-bold"},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.pick_version"))+" ")]):_vm._e(),_c('div',{staticClass:"text-secondary"},[_vm._v(" "+_vm._s(_vm.totalHitsNb)+" "+_vm._s(_vm.$t("caareavlib.vehicle.search.results_for"))+" \""+_vm._s(_vm.searchText)+"\" ")])]),_c('div',{staticClass:"bg-light mt-3",attrs:{"data-cy":"used-vehicle-search-result-content"}},_vm._l((_vm.elements),function(element){return _c('VehicleSearchResultItem',{key:element.hasOwnProperty('vehicle_id') ? element.vehicle_id : element.id,staticClass:"border-bottom clickable px-4",attrs:{"vehicle":element,"can-validate":_vm.areElementClickable,"data-cy":("vehicle-result-item-" + (element.hasOwnProperty('vehicle_id') ? element.vehicle_id : element.id))},on:{"validate-version":_vm.onValidateVersion}})}),1)])])}
-var VehicleSearchResultvue_type_template_id_75fbe65f_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=template&id=004caf04&
+var VehicleSearchResultvue_type_template_id_004caf04_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row mt-3"},[(_vm.elements !== null || _vm.errors !== {})?_c('div',{staticClass:"col-3",attrs:{"data-cy":"vehicle-search-filters"}},[_c('FormVehicleFilters',{staticClass:"bg-light",attrs:{"errors":_vm.errors},on:{"filter-input":_vm.onFilterInput,"reset-filters":_vm.onEraseFilters},model:{value:(_vm.value),callback:function ($$v) {_vm.value=$$v},expression:"value"}})],1):_vm._e(),_c('div',{staticClass:"col-9"},[_c('div',{staticClass:"bg-light p-3 d-flex justify-content-between"},[(_vm.areElementClickable && _vm.elements.length > 0)?_c('div',{staticClass:"font-weight-bold"},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.pick_version"))+" ")]):_vm._e(),_c('div',{staticClass:"text-secondary"},[_vm._v(" "+_vm._s(_vm.totalHitsNb)+" "+_vm._s(_vm.$t("caareavlib.vehicle.search.results_for"))+" \""+_vm._s(_vm.searchText)+"\" ")])]),_c('div',{staticClass:"bg-light mt-3",attrs:{"data-cy":"used-vehicle-search-result-content"}},_vm._l((_vm.elements),function(element){return _c('VehicleSearchResultItem',{key:element.hasOwnProperty('vehicle_id') ? element.vehicle_id : element.id,staticClass:"border-bottom clickable px-4",attrs:{"vehicle":element,"can-validate":_vm.areElementClickable,"data-cy":("vehicle-result-item-" + (element.hasOwnProperty('vehicle_id') ? element.vehicle_id : element.id))},on:{"validate-version":_vm.onValidateVersion}})}),1)])])}
+var VehicleSearchResultvue_type_template_id_004caf04_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=template&id=75fbe65f&
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=template&id=004caf04&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=template&id=c9d79cc0&
 var VehicleSearchResultItemvue_type_template_id_c9d79cc0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vehicle-list-item-border row no-gutters justify-content-between align-items-center w-100 py-3",on:{"click":_vm.onButtonClick}},[(_vm.image)?_c('div',{staticClass:"col-2"},[_c('img',{attrs:{"src":_vm.image,"alt":"image"}})]):_vm._e(),_c('div',{staticClass:"col-4 result-name",attrs:{"data-cy":"search-result-name"}},[_vm._v(" "+_vm._s(_vm.vehicle.make)+" "+_vm._s(_vm.vehicle.model)+" "+_vm._s(_vm.vehicle.version)+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-energy"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.energy ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.energy))) : "--"))+" ")]),_c('div',{staticClass:"col-1 result-details text-center",attrs:{"data-cy":"search-result-item-fiscalhp"}},[_vm._v(" "+_vm._s(_vm.vehicle.fiscal_hp ? ((_vm.vehicle.fiscal_hp) + " " + (_vm.$t("caareavlib.vehicle.search.horsepower"))) : "--")+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-transmission"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.transmission ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.transmission))) : "--"))+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-year"}},[_vm._v(" "+_vm._s(_vm.vehicle.year ? _vm.vehicle.year : "--")+" ")]),(_vm.canValidate)?_c('div',{staticClass:"col-1 ml-auto text-right icon-fade"},[_c('i',{staticClass:"icon-chevron-right font-size-40",attrs:{"aria-hidden":"true"}})]):_vm._e()])}
@@ -22956,6 +22957,119 @@ var VehicleSearchResultItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var VehicleSearchResultItem = (VehicleSearchResultItem_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=dc509cce&scoped=true&
+var FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"p-3 d-flex flex-column"},[_c('div',{staticClass:"border-bottom mb-4 pb-3"},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.refine_the_search"))+" ")]),_vm._l((Object.keys(_vm.value.filters)),function(criteria){return _c('div',{key:criteria},[_c('div',{staticClass:"my-1"},[_vm._v(_vm._s(_vm.$t(("caareavlib.vehicle.search." + criteria))))]),(_vm.value.filters[criteria].inputType === 'select')?_c('FormSelect',{key:criteria,attrs:{"name":("filter-" + criteria),"select-options":_vm.value.filters[criteria].choices,"selected-option":_vm.value.filters[criteria].value,"label-select-attr":"label","allow-empty":true,"empty-label":_vm.$t(("caareavlib.vehicle.search.all_" + criteria))},on:{"update:selectedOption":function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},"update:selected-option":[function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}]}}):_c('FormInput',{attrs:{"label":_vm.$t('caareavlib.vehicle.search.model_year'),"debounce-input":true,"name":("filter-" + criteria),"label-class":['col-2'],"type":_vm.value.filters[criteria].inputType,"errors":_vm.filterErrors(criteria)},on:{"input":function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}},model:{value:(_vm.value.filters[criteria].value),callback:function ($$v) {_vm.$set(_vm.value.filters[criteria], "value", $$v)},expression:"value.filters[criteria].value"}})],1)}),_c('div',{staticClass:"btn btn-outline-secondary mx-auto mt-3 font-size-12",attrs:{"data-cy":"vehicle-reset-filters"},on:{"click":function($event){$event.preventDefault();return _vm.onEraseFilters($event)}}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.erase_filters"))+" ")])],2)}
+var FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=dc509cce&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var FormVehicleFiltersvue_type_script_lang_js_ = ({
+  name: "FormVehicleFilters",
+  components: {
+    FormSelect: FormSelect,
+    FormInput: FormInput
+  },
+  props: {
+    value: {
+      type: Object,
+      required: true
+    },
+    errors: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
+  methods: {
+    filterErrors: function filterErrors(criteria) {
+      var err = {};
+
+      if ("filters" in this.errors && criteria in this.errors.filters) {
+        err["filter-".concat(criteria)] = this.errors.filters[criteria];
+      }
+
+      return err;
+    },
+    onEraseFilters: function onEraseFilters() {
+      for (var filter in this.value.filters) {
+        // noinspection JSUnfilteredForInLoop
+        this.value.filters[filter].value = null;
+      }
+
+      this.$emit("input", this.value);
+      this.$emit("reset-filters");
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=script&lang=js&
+ /* harmony default export */ var form_FormVehicleFiltersvue_type_script_lang_js_ = (FormVehicleFiltersvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue
+
+
+
+
+
+/* normalize component */
+
+var FormVehicleFilters_component = normalizeComponent(
+  form_FormVehicleFiltersvue_type_script_lang_js_,
+  FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_render,
+  FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_staticRenderFns,
+  false,
+  null,
+  "dc509cce",
+  null
+  
+)
+
+/* harmony default export */ var FormVehicleFilters = (FormVehicleFilters_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=script&lang=js&
 
 //
@@ -23001,47 +23115,13 @@ var VehicleSearchResultItem_component = normalizeComponent(
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 /* harmony default export */ var VehicleSearchResultvue_type_script_lang_js_ = ({
   name: "VehicleSearchResult",
   components: {
-    FormSelect: FormSelect,
-    FormInput: FormInput,
-    VehicleSearchResultItem: VehicleSearchResultItem
+    VehicleSearchResultItem: VehicleSearchResultItem,
+    FormVehicleFilters: FormVehicleFilters
   },
   props: {
     value: {
@@ -23077,21 +23157,10 @@ var VehicleSearchResultItem_component = normalizeComponent(
     };
   },
   methods: {
-    filterErrors: function filterErrors(criteria) {
-      var err = {};
-
-      if ("filters" in this.errors && criteria in this.errors.filters) {
-        err["filter-".concat(criteria)] = this.errors.filters[criteria];
-      }
-
-      return err;
+    onFilterInput: function onFilterInput(criteria, value) {
+      this.$emit("filter-input", criteria, value);
     },
     onEraseFilters: function onEraseFilters() {
-      for (var filter in this.value.filters) {
-        // noinspection JSUnfilteredForInLoop
-        this.value.filters[filter].value = null;
-      }
-
       this.$emit("input", this.value);
       this.$emit("reset-filters");
     },
@@ -23112,8 +23181,8 @@ var VehicleSearchResultItem_component = normalizeComponent(
 
 var VehicleSearchResult_component = normalizeComponent(
   VehicleSearchResult_VehicleSearchResultvue_type_script_lang_js_,
-  VehicleSearchResultvue_type_template_id_75fbe65f_render,
-  VehicleSearchResultvue_type_template_id_75fbe65f_staticRenderFns,
+  VehicleSearchResultvue_type_template_id_004caf04_render,
+  VehicleSearchResultvue_type_template_id_004caf04_staticRenderFns,
   false,
   null,
   null,
@@ -23228,6 +23297,7 @@ var VehicleSearchResultCard_component = normalizeComponent(
 
 /* harmony default export */ var vehicle_VehicleSearchResultCard = (VehicleSearchResultCard);
 // CONCATENATED MODULE: ./src/components/vehicle/index.js
+
 
 
 
