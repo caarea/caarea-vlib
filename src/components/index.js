@@ -10,6 +10,14 @@ import {
   FormSelect,
 } from "./form"
 
+import {
+  VehicleSearchArea,
+  VehicleSearchResult,
+  VehicleSearchResultItem,
+  VehicleSearchResultCard,
+  FormVehicleFilters,
+} from "./vehicle"
+
 import Spinner from "./utils"
 
 export {
@@ -22,5 +30,10 @@ export {
   FormRowInput,
   FormRowSelect,
   FormTextArea,
+  VehicleSearchArea,
+  VehicleSearchResult,
+  VehicleSearchResultItem,
+  VehicleSearchResultCard,
+  FormVehicleFilters,
   Spinner,
 }

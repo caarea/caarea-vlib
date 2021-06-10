@@ -209,6 +209,30 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
+/***/ "0d03":
+/***/ (function(module, exports, __webpack_require__) {
+
+var redefine = __webpack_require__("6eeb");
+
+var DatePrototype = Date.prototype;
+var INVALID_DATE = 'Invalid Date';
+var TO_STRING = 'toString';
+var nativeDateToString = DatePrototype[TO_STRING];
+var getTime = DatePrototype.getTime;
+
+// `Date.prototype.toString` method
+// https://tc39.es/ecma262/#sec-date.prototype.tostring
+if (new Date(NaN) + '' != INVALID_DATE) {
+  redefine(DatePrototype, TO_STRING, function toString() {
+    var value = getTime.call(this);
+    // eslint-disable-next-line no-self-compare -- NaN check
+    return value === value ? nativeDateToString.call(this) : INVALID_DATE;
+  });
+}
+
+
+/***/ }),
+
 /***/ "129f":
 /***/ (function(module, exports) {
 
@@ -501,6 +525,39 @@ $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, 
       .indexOf(notARegExp(searchString), arguments.length > 1 ? arguments[1] : undefined);
   }
 });
+
+
+/***/ }),
+
+/***/ "25f0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var redefine = __webpack_require__("6eeb");
+var anObject = __webpack_require__("825a");
+var fails = __webpack_require__("d039");
+var flags = __webpack_require__("ad6d");
+
+var TO_STRING = 'toString';
+var RegExpPrototype = RegExp.prototype;
+var nativeToString = RegExpPrototype[TO_STRING];
+
+var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
+// FF44- RegExp#toString has a wrong name
+var INCORRECT_NAME = nativeToString.name != TO_STRING;
+
+// `RegExp.prototype.toString` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.tostring
+if (NOT_GENERIC || INCORRECT_NAME) {
+  redefine(RegExp.prototype, TO_STRING, function toString() {
+    var R = anObject(this);
+    var p = String(R.source);
+    var rf = R.flags;
+    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? flags.call(R) : rf);
+    return '/' + p + '/' + f;
+  }, { unsafe: true });
+}
 
 
 /***/ }),
@@ -21056,6 +21113,11 @@ __webpack_require__.d(components_namespaceObject, "FormSelect", function() { ret
 __webpack_require__.d(components_namespaceObject, "FormRowInput", function() { return form_FormRowInput; });
 __webpack_require__.d(components_namespaceObject, "FormRowSelect", function() { return form_FormRowSelect; });
 __webpack_require__.d(components_namespaceObject, "FormTextArea", function() { return form_FormTextArea; });
+__webpack_require__.d(components_namespaceObject, "VehicleSearchArea", function() { return vehicle_VehicleSearchArea; });
+__webpack_require__.d(components_namespaceObject, "VehicleSearchResult", function() { return vehicle_VehicleSearchResult; });
+__webpack_require__.d(components_namespaceObject, "VehicleSearchResultItem", function() { return vehicle_VehicleSearchResultItem; });
+__webpack_require__.d(components_namespaceObject, "VehicleSearchResultCard", function() { return vehicle_VehicleSearchResultCard; });
+__webpack_require__.d(components_namespaceObject, "FormVehicleFilters", function() { return FormVehicleFilters; });
 __webpack_require__.d(components_namespaceObject, "Spinner", function() { return utils; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
@@ -22424,6 +22486,833 @@ var FormTextArea_component = normalizeComponent(
 
 
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchArea/VehicleSearchArea.vue?vue&type=template&id=13a7c631&
+var VehicleSearchAreavue_type_template_id_13a7c631_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row"},[_c('div',{staticClass:"col-3"},[_c('FormUsedVehicleSearch',{staticClass:"h-100 p-3",attrs:{"search-type":"plate","used-vehicles-search-errors":_vm.usedVehiclesSearchErrors,"is-search-loading":_vm.isSearchLoading,"is-immat-mocked":_vm.isImmatMocked},on:{"submit":_vm.onPlateSearch,"input":_vm.onInput},model:{value:(_vm.value.plate),callback:function ($$v) {_vm.$set(_vm.value, "plate", $$v)},expression:"value.plate"}})],1),_c('div',{staticClass:"col-3"},[_c('FormUsedVehicleSearch',{staticClass:"h-100 p-3",attrs:{"search-type":"vin","used-vehicles-search-errors":_vm.usedVehiclesSearchErrors,"is-search-loading":_vm.isSearchLoading,"is-immat-mocked":_vm.isImmatMocked},on:{"submit":_vm.onVinSearch,"input":_vm.onInput},model:{value:(_vm.value.vin),callback:function ($$v) {_vm.$set(_vm.value, "vin", $$v)},expression:"value.vin"}})],1),_c('div',{staticClass:"col-6"},[_c('form-manual-search',{staticClass:"h-100 p-3",attrs:{"full-width":true,"is-search-loading":_vm.isSearchLoading,"errors":_vm.manualSearchErrors},on:{"manual-vehicle-search":_vm.onVehicleManualSearch,"input":_vm.onInput},model:{value:(_vm.value),callback:function ($$v) {_vm.value=$$v},expression:"value"}})],1)])}
+var VehicleSearchAreavue_type_template_id_13a7c631_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchArea/VehicleSearchArea.vue?vue&type=template&id=13a7c631&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormUsedVehicleSearch.vue?vue&type=template&id=14c657cd&
+var FormUsedVehicleSearchvue_type_template_id_14c657cd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"bg-light d-flex flex-column"},[_c('div',{staticClass:"border-bottom pb-3 mb-3",attrs:{"data-cy":("search-by-" + _vm.searchType)}},[_vm._v(" "+_vm._s(_vm.$t(("caareavlib.vehicle.search.by_" + _vm.searchType)))+" ")]),_c('div',[_c('FormInput',{attrs:{"value":_vm.value,"placeholder":_vm.$t(("caareavlib.vehicle.search.placeholder." + _vm.searchType)),"max-length":17,"errors":_vm.usedVehiclesSearchErrors,"name":_vm.searchType,"data-cy":("search-input-" + _vm.searchType),"help":_vm.searchHelp},on:{"input":_vm.onInput,"keyboard-enter":_vm.onSubmitButton}})],1),_c('div',{staticClass:"p-2 text-center mt-auto"},[_c('button',{staticClass:"btn btn-primary mt-4",attrs:{"type":"button","disabled":_vm.isButtonDisable || _vm.isSearchLoading,"data-cy":("search-button-" + _vm.searchType)},on:{"click":function($event){$event.preventDefault();return _vm.onSubmitButton($event)}}},[(_vm.isSearchLoading)?_c('span',{staticClass:"spinner-border spinner-border-sm",attrs:{"role":"status","aria-hidden":"true"}}):_vm._e(),_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.button.search"))+" ")])])])}
+var FormUsedVehicleSearchvue_type_template_id_14c657cd_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormUsedVehicleSearch.vue?vue&type=template&id=14c657cd&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormUsedVehicleSearch.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var FormUsedVehicleSearchvue_type_script_lang_js_ = ({
+  cname: "FormUsedVehicleSearch",
+  components: {
+    FormInput: FormInput
+  },
+  props: {
+    searchType: String,
+    value: String,
+    usedVehiclesSearchErrors: Object,
+    isSearchLoading: {
+      type: Boolean,
+      required: true
+    },
+    isImmatMocked: {
+      type: Boolean,
+      "default": false
+    }
+  },
+  computed: {
+    searchHelp: function searchHelp() {
+      if (this.isImmatMocked) {
+        return this.isVinSelected ? "'validvin' pour simuler un n° de série valide" : "'aa000aa' pour simuler une plaque valide";
+      }
+
+      return "";
+    },
+    isVinSelected: function isVinSelected() {
+      return this.searchType === "vin";
+    },
+    isButtonDisable: function isButtonDisable() {
+      return this.value === "";
+    }
+  },
+  methods: {
+    onInput: function onInput(value) {
+      this.$emit("input", value);
+    },
+    onSubmitButton: function onSubmitButton() {
+      this.$emit("submit", this.searchType, this.value);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormUsedVehicleSearch.vue?vue&type=script&lang=js&
+ /* harmony default export */ var form_FormUsedVehicleSearchvue_type_script_lang_js_ = (FormUsedVehicleSearchvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormUsedVehicleSearch.vue
+
+
+
+
+
+/* normalize component */
+
+var FormUsedVehicleSearch_component = normalizeComponent(
+  form_FormUsedVehicleSearchvue_type_script_lang_js_,
+  FormUsedVehicleSearchvue_type_template_id_14c657cd_render,
+  FormUsedVehicleSearchvue_type_template_id_14c657cd_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FormUsedVehicleSearch = (FormUsedVehicleSearch_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormManualSearch.vue?vue&type=template&id=5279615d&
+var FormManualSearchvue_type_template_id_5279615d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"bg-light d-flex flex-column"},[_c('div',{staticClass:"border-bottom pb-3 mb-3",attrs:{"data-cy":"search-by-text"}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.by_manual_search"))+" ")]),_c('div',[_c('FormRowInput',{staticClass:"col-11",class:_vm.widthClass,attrs:{"data-cy":"search-input-manual","name":"manual","type":"text","max-length":64,"label":_vm.$t('caareavlib.vehicle.search.brand_and_model'),"errors":_vm.errors,"help":_vm.$t('caareavlib.vehicle.search.help.velastic')},on:{"keyboard-enter":_vm.onSubmitButton,"input":_vm.onInput},model:{value:(_vm.value.manual),callback:function ($$v) {_vm.$set(_vm.value, "manual", $$v)},expression:"value.manual"}}),_c('FormRowInput',{staticClass:"col-11",class:_vm.widthClass,attrs:{"data-cy":"search-input-year","name":"model_year","type":"text","max-length":4,"label":_vm.$t('caareavlib.vehicle.search.model_year'),"errors":'filters' in _vm.errors ? _vm.errors.filters : {}},on:{"keyboard-enter":_vm.onSubmitButton,"input":_vm.onInput},model:{value:(_vm.value.filters.model_year.value),callback:function ($$v) {_vm.$set(_vm.value.filters.model_year, "value", $$v)},expression:"value.filters.model_year.value"}})],1),_c('div',{staticClass:"p-2 text-center mt-auto"},[_c('button',{staticClass:"btn btn-primary mt-4",attrs:{"type":"button","disabled":_vm.isButtonDisable || _vm.isSearchLoading,"data-cy":"search-button-manual"},on:{"click":function($event){$event.preventDefault();return _vm.onSubmitButton($event)}}},[(_vm.isSearchLoading)?_c('span',{staticClass:"spinner-border spinner-border-sm",attrs:{"role":"status","aria-hidden":"true"}}):_vm._e(),_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.button.search"))+" ")])])])}
+var FormManualSearchvue_type_template_id_5279615d_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormManualSearch.vue?vue&type=template&id=5279615d&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormManualSearch.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var FormManualSearchvue_type_script_lang_js_ = ({
+  name: "FormManualSearch",
+  components: {
+    FormRowInput: FormRowInput
+  },
+  props: {
+    fullWidth: {
+      type: Boolean,
+      "default": false
+    },
+    isSearchLoading: {
+      type: Boolean,
+      required: true
+    },
+    value: {
+      type: Object,
+      required: true
+    },
+    errors: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
+  computed: {
+    isButtonDisable: function isButtonDisable() {
+      return this.value.manual === "";
+    },
+    widthClass: function widthClass() {
+      return this.fullWidth ? "col-12" : "col-10";
+    }
+  },
+  methods: {
+    onInput: function onInput() {
+      this.$emit("input", this.value);
+    },
+    onSubmitButton: function onSubmitButton() {
+      this.$emit("manual-vehicle-search");
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormManualSearch.vue?vue&type=script&lang=js&
+ /* harmony default export */ var form_FormManualSearchvue_type_script_lang_js_ = (FormManualSearchvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormManualSearch.vue
+
+
+
+
+
+/* normalize component */
+
+var FormManualSearch_component = normalizeComponent(
+  form_FormManualSearchvue_type_script_lang_js_,
+  FormManualSearchvue_type_template_id_5279615d_render,
+  FormManualSearchvue_type_template_id_5279615d_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FormManualSearch = (FormManualSearch_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchArea/VehicleSearchArea.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var VehicleSearchAreavue_type_script_lang_js_ = ({
+  name: "VehicleSearchArea",
+  components: {
+    FormUsedVehicleSearch: FormUsedVehicleSearch,
+    FormManualSearch: FormManualSearch
+  },
+  props: {
+    usedVehiclesSearchErrors: Object,
+    manualSearchErrors: Object,
+    isSearchLoading: {
+      type: Boolean,
+      required: true
+    },
+    isImmatMocked: {
+      type: Boolean,
+      "default": false
+    },
+    value: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    onInput: function onInput() {
+      this.$emit("input", this.value);
+    },
+    onPlateSearch: function onPlateSearch() {
+      this.value.vin = "";
+      this.value.manual = "";
+      this.value.filters.model_year.value = null;
+      this.onVehicleSearch("plate");
+    },
+    onVinSearch: function onVinSearch() {
+      this.value.plate = "";
+      this.value.manual = "";
+      this.value.filters.model_year.value = null;
+      this.onVehicleSearch("vin");
+    },
+    onVehicleSearch: function onVehicleSearch(searchType) {
+      this.$emit("used-vehicle-search", searchType);
+    },
+    onVehicleManualSearch: function onVehicleManualSearch() {
+      this.value.plate = "";
+      this.value.vin = "";
+      this.$emit("manual-vehicle-search", this.value);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchArea/VehicleSearchArea.vue?vue&type=script&lang=js&
+ /* harmony default export */ var VehicleSearchArea_VehicleSearchAreavue_type_script_lang_js_ = (VehicleSearchAreavue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchArea/VehicleSearchArea.vue
+
+
+
+
+
+/* normalize component */
+
+var VehicleSearchArea_component = normalizeComponent(
+  VehicleSearchArea_VehicleSearchAreavue_type_script_lang_js_,
+  VehicleSearchAreavue_type_template_id_13a7c631_render,
+  VehicleSearchAreavue_type_template_id_13a7c631_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var VehicleSearchArea = (VehicleSearchArea_component.exports);
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchArea/index.js
+
+/* harmony default export */ var vehicle_VehicleSearchArea = (VehicleSearchArea);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=template&id=004caf04&
+var VehicleSearchResultvue_type_template_id_004caf04_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"row mt-3"},[(_vm.elements !== null || _vm.errors !== {})?_c('div',{staticClass:"col-3",attrs:{"data-cy":"vehicle-search-filters"}},[_c('FormVehicleFilters',{staticClass:"bg-light",attrs:{"errors":_vm.errors},on:{"filter-input":_vm.onFilterInput,"reset-filters":_vm.onEraseFilters},model:{value:(_vm.value),callback:function ($$v) {_vm.value=$$v},expression:"value"}})],1):_vm._e(),_c('div',{staticClass:"col-9"},[_c('div',{staticClass:"bg-light p-3 d-flex justify-content-between"},[(_vm.areElementClickable && _vm.elements.length > 0)?_c('div',{staticClass:"font-weight-bold"},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.pick_version"))+" ")]):_vm._e(),_c('div',{staticClass:"text-secondary"},[_vm._v(" "+_vm._s(_vm.totalHitsNb)+" "+_vm._s(_vm.$t("caareavlib.vehicle.search.results_for"))+" \""+_vm._s(_vm.searchText)+"\" ")])]),_c('div',{staticClass:"bg-light mt-3",attrs:{"data-cy":"used-vehicle-search-result-content"}},_vm._l((_vm.elements),function(element){return _c('VehicleSearchResultItem',{key:element.hasOwnProperty('vehicle_id') ? element.vehicle_id : element.id,staticClass:"border-bottom clickable px-4",attrs:{"vehicle":element,"can-validate":_vm.areElementClickable,"data-cy":("vehicle-result-item-" + (element.hasOwnProperty('vehicle_id') ? element.vehicle_id : element.id))},on:{"validate-version":_vm.onValidateVersion}})}),1)])])}
+var VehicleSearchResultvue_type_template_id_004caf04_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=template&id=004caf04&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=template&id=c9d79cc0&
+var VehicleSearchResultItemvue_type_template_id_c9d79cc0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vehicle-list-item-border row no-gutters justify-content-between align-items-center w-100 py-3",on:{"click":_vm.onButtonClick}},[(_vm.image)?_c('div',{staticClass:"col-2"},[_c('img',{attrs:{"src":_vm.image,"alt":"image"}})]):_vm._e(),_c('div',{staticClass:"col-4 result-name",attrs:{"data-cy":"search-result-name"}},[_vm._v(" "+_vm._s(_vm.vehicle.make)+" "+_vm._s(_vm.vehicle.model)+" "+_vm._s(_vm.vehicle.version)+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-energy"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.energy ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.energy))) : "--"))+" ")]),_c('div',{staticClass:"col-1 result-details text-center",attrs:{"data-cy":"search-result-item-fiscalhp"}},[_vm._v(" "+_vm._s(_vm.vehicle.fiscal_hp ? ((_vm.vehicle.fiscal_hp) + " " + (_vm.$t("caareavlib.vehicle.search.horsepower"))) : "--")+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-transmission"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.transmission ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.transmission))) : "--"))+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-year"}},[_vm._v(" "+_vm._s(_vm.vehicle.year ? _vm.vehicle.year : "--")+" ")]),(_vm.canValidate)?_c('div',{staticClass:"col-1 ml-auto text-right icon-fade"},[_c('i',{staticClass:"icon-chevron-right font-size-40",attrs:{"aria-hidden":"true"}})]):_vm._e()])}
+var VehicleSearchResultItemvue_type_template_id_c9d79cc0_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=template&id=c9d79cc0&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.date.to-string.js
+var es_date_to_string = __webpack_require__("0d03");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+var es_regexp_to_string = __webpack_require__("25f0");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=script&lang=js&
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var VehicleSearchResultItemvue_type_script_lang_js_ = ({
+  name: "VehicleSearchResultItem",
+  filters: {
+    capitalize: function capitalize(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  props: {
+    vehicle: {
+      type: Object,
+      required: true
+    },
+    image: {
+      type: String,
+      "default": null
+    },
+    canValidate: {
+      type: Boolean,
+      "default": true
+    }
+  },
+  methods: {
+    onButtonClick: function onButtonClick() {
+      this.$emit("validate-version", this.vehicle);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=script&lang=js&
+ /* harmony default export */ var VehicleSearchResultItem_VehicleSearchResultItemvue_type_script_lang_js_ = (VehicleSearchResultItemvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue
+
+
+
+
+
+/* normalize component */
+
+var VehicleSearchResultItem_component = normalizeComponent(
+  VehicleSearchResultItem_VehicleSearchResultItemvue_type_script_lang_js_,
+  VehicleSearchResultItemvue_type_template_id_c9d79cc0_render,
+  VehicleSearchResultItemvue_type_template_id_c9d79cc0_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var VehicleSearchResultItem = (VehicleSearchResultItem_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=dc509cce&scoped=true&
+var FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"p-3 d-flex flex-column"},[_c('div',{staticClass:"border-bottom mb-4 pb-3"},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.refine_the_search"))+" ")]),_vm._l((Object.keys(_vm.value.filters)),function(criteria){return _c('div',{key:criteria},[_c('div',{staticClass:"my-1"},[_vm._v(_vm._s(_vm.$t(("caareavlib.vehicle.search." + criteria))))]),(_vm.value.filters[criteria].inputType === 'select')?_c('FormSelect',{key:criteria,attrs:{"name":("filter-" + criteria),"select-options":_vm.value.filters[criteria].choices,"selected-option":_vm.value.filters[criteria].value,"label-select-attr":"label","allow-empty":true,"empty-label":_vm.$t(("caareavlib.vehicle.search.all_" + criteria))},on:{"update:selectedOption":function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},"update:selected-option":[function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}]}}):_c('FormInput',{attrs:{"label":_vm.$t('caareavlib.vehicle.search.model_year'),"debounce-input":true,"name":("filter-" + criteria),"label-class":['col-2'],"type":_vm.value.filters[criteria].inputType,"errors":_vm.filterErrors(criteria)},on:{"input":function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}},model:{value:(_vm.value.filters[criteria].value),callback:function ($$v) {_vm.$set(_vm.value.filters[criteria], "value", $$v)},expression:"value.filters[criteria].value"}})],1)}),_c('div',{staticClass:"btn btn-outline-secondary mx-auto mt-3 font-size-12",attrs:{"data-cy":"vehicle-reset-filters"},on:{"click":function($event){$event.preventDefault();return _vm.onEraseFilters($event)}}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.erase_filters"))+" ")])],2)}
+var FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=dc509cce&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var FormVehicleFiltersvue_type_script_lang_js_ = ({
+  name: "FormVehicleFilters",
+  components: {
+    FormSelect: FormSelect,
+    FormInput: FormInput
+  },
+  props: {
+    value: {
+      type: Object,
+      required: true
+    },
+    errors: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
+  methods: {
+    filterErrors: function filterErrors(criteria) {
+      var err = {};
+
+      if ("filters" in this.errors && criteria in this.errors.filters) {
+        err["filter-".concat(criteria)] = this.errors.filters[criteria];
+      }
+
+      return err;
+    },
+    onEraseFilters: function onEraseFilters() {
+      for (var filter in this.value.filters) {
+        // noinspection JSUnfilteredForInLoop
+        this.value.filters[filter].value = null;
+      }
+
+      this.$emit("input", this.value);
+      this.$emit("reset-filters");
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=script&lang=js&
+ /* harmony default export */ var form_FormVehicleFiltersvue_type_script_lang_js_ = (FormVehicleFiltersvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue
+
+
+
+
+
+/* normalize component */
+
+var FormVehicleFilters_component = normalizeComponent(
+  form_FormVehicleFiltersvue_type_script_lang_js_,
+  FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_render,
+  FormVehicleFiltersvue_type_template_id_dc509cce_scoped_true_staticRenderFns,
+  false,
+  null,
+  "dc509cce",
+  null
+  
+)
+
+/* harmony default export */ var FormVehicleFilters = (FormVehicleFilters_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var VehicleSearchResultvue_type_script_lang_js_ = ({
+  name: "VehicleSearchResult",
+  components: {
+    VehicleSearchResultItem: VehicleSearchResultItem,
+    FormVehicleFilters: FormVehicleFilters
+  },
+  props: {
+    value: {
+      type: Object,
+      required: true
+    },
+    searchText: {
+      type: String,
+      required: true
+    },
+    elements: {
+      type: Array,
+      required: true
+    },
+    areElementClickable: {
+      type: Boolean,
+      "default": false
+    },
+    totalHitsNb: {
+      type: Number,
+      required: true
+    },
+    errors: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
+  data: function data() {
+    return {
+      isLoading: false
+    };
+  },
+  methods: {
+    onFilterInput: function onFilterInput(criteria, value) {
+      this.$emit("filter-input", criteria, value);
+    },
+    onEraseFilters: function onEraseFilters() {
+      this.$emit("input", this.value);
+      this.$emit("reset-filters");
+    },
+    onValidateVersion: function onValidateVersion(selectedVehicle) {
+      this.$emit("validate-version", selectedVehicle);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=script&lang=js&
+ /* harmony default export */ var VehicleSearchResult_VehicleSearchResultvue_type_script_lang_js_ = (VehicleSearchResultvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue
+
+
+
+
+
+/* normalize component */
+
+var VehicleSearchResult_component = normalizeComponent(
+  VehicleSearchResult_VehicleSearchResultvue_type_script_lang_js_,
+  VehicleSearchResultvue_type_template_id_004caf04_render,
+  VehicleSearchResultvue_type_template_id_004caf04_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var VehicleSearchResult = (VehicleSearchResult_component.exports);
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResult/index.js
+
+/* harmony default export */ var vehicle_VehicleSearchResult = (VehicleSearchResult);
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultItem/index.js
+
+/* harmony default export */ var vehicle_VehicleSearchResultItem = (VehicleSearchResultItem);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResultCard/VehicleSearchResultCard.vue?vue&type=template&id=266dc954&
+var VehicleSearchResultCardvue_type_template_id_266dc954_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"justify-content-center card mt-4 rounded-0"},[_c('div',{staticClass:"card-header d-flex justify-content-start align-items-center w-100 p-3 border-bottom-0"},[_c('span',{staticClass:"justify-content-center result-image d-flex align-items-center bg-white"},[(_vm.image)?_c('img',{attrs:{"src":_vm.image,"alt":"image"}}):_c('i',{staticClass:"m-3 icon-caarea-car font-size-40",attrs:{"aria-hidden":"true"}})]),_c('div',{staticClass:"d-flex flex-column ml-3"},[_c('div',{staticClass:"font-weight-bold font-size-22"},[_vm._v(" "+_vm._s(_vm.vehicle.name)+" ")]),_c('div',[_c('span',{staticClass:"font-size-14"},[_vm._v(" "+_vm._s(_vm.vehicle.version)+" ")]),(_vm.vehicleExtra)?_c('span',{staticClass:"ml-2 vehicle-extra font-size-12"},[_vm._v(" "+_vm._s(_vm.vehicleExtra)+" ")]):_vm._e()])])])])}
+var VehicleSearchResultCardvue_type_template_id_266dc954_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultCard/VehicleSearchResultCard.vue?vue&type=template&id=266dc954&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResultCard/VehicleSearchResultCard.vue?vue&type=script&lang=js&
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var VehicleSearchResultCardvue_type_script_lang_js_ = ({
+  name: "VehicleSearchResultCard",
+  filters: {
+    capitalize: function capitalize(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  props: {
+    vehicle: {
+      type: Object,
+      required: true
+    },
+    image: {
+      type: String,
+      "default": null
+    },
+    productCode: {
+      type: String
+    }
+  },
+  computed: {
+    vehicleExtra: function vehicleExtra() {
+      var text = "";
+      if (this.vehicle.hasOwnProperty("energy") && this.vehicle.energy) text += " " + this.$options.filters.capitalize(this.$t("caareavlib.vehicle.search.".concat(this.vehicle.energy)));
+      if (this.vehicle.hasOwnProperty("fiscal_hp") && this.vehicle.fiscal_hp) text += " ".concat(this.vehicle.fiscal_hp, " ").concat(this.$t("caareavlib.vehicle.search.horsepower"));
+      if (this.vehicle.hasOwnProperty("transmission") && this.vehicle.transmission) text += " " + this.$options.filters.capitalize(this.$t("caareavlib.vehicle.search.".concat(this.vehicle.transmission)));
+      if (this.vehicle.hasOwnProperty("year") && this.vehicle.year) text += " ".concat(this.vehicle.year);
+      return text;
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultCard/VehicleSearchResultCard.vue?vue&type=script&lang=js&
+ /* harmony default export */ var VehicleSearchResultCard_VehicleSearchResultCardvue_type_script_lang_js_ = (VehicleSearchResultCardvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultCard/VehicleSearchResultCard.vue
+
+
+
+
+
+/* normalize component */
+
+var VehicleSearchResultCard_component = normalizeComponent(
+  VehicleSearchResultCard_VehicleSearchResultCardvue_type_script_lang_js_,
+  VehicleSearchResultCardvue_type_template_id_266dc954_render,
+  VehicleSearchResultCardvue_type_template_id_266dc954_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var VehicleSearchResultCard = (VehicleSearchResultCard_component.exports);
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultCard/index.js
+
+/* harmony default export */ var vehicle_VehicleSearchResultCard = (VehicleSearchResultCard);
+// CONCATENATED MODULE: ./src/components/vehicle/index.js
+
+
+
+
+
+
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/utils/Spinner.vue?vue&type=template&id=778cb050&
 var Spinnervue_type_template_id_778cb050_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"text-center"},[(_vm.message)?_c('h4',{staticClass:"mb-4"},[_vm._v(_vm._s(_vm.message))]):_vm._e(),_c('vue-spinner',{attrs:{"color":"#1d2b4e"}})],1)}
 var Spinnervue_type_template_id_778cb050_staticRenderFns = []
@@ -22587,6 +23476,7 @@ var Spinner_component = normalizeComponent(
 
 /* harmony default export */ var utils = (Spinner);
 // CONCATENATED MODULE: ./src/components/index.js
+
 
 
 
