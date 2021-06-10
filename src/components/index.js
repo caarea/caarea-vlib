@@ -18,6 +18,8 @@ import {
   FormVehicleFilters,
 } from "./vehicle"
 
+import Spinner from "./utils"
+
 export {
   FormAsyncSelect,
   FormCheckbox,
@@ -33,4 +35,5 @@ export {
   VehicleSearchResultItem,
   VehicleSearchResultCard,
   FormVehicleFilters,
+  Spinner,
 }
