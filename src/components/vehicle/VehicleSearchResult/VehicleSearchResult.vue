@@ -18,7 +18,10 @@
         <div v-if="areElementClickable && elements.length > 0" class="font-weight-bold">
           {{ $t("caareavlib.vehicle.search.pick_version") }}
         </div>
-        <div class="text-secondary">
+        <!--
+        Temporary fix : Display number of results only if there are no results (CSO_504)
+        -->
+        <div v-if="elements.length === 0" class="text-secondary">
           {{ totalHitsNb }} {{ $t("caareavlib.vehicle.search.results_for") }} "{{
             searchText
           }}"
