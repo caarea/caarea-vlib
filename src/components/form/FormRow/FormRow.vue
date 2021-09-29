@@ -1,6 +1,6 @@
 <template>
   <div v-if="inline" class="row">
-    <div v-if="label" :class="['mx-auto', ...labelClass]" class="pt-2">
+    <div v-if="label" :class="[...labelClass]">
       <label :for="forId" class="mb-0">
         {{ label }}
         <sup v-if="required">*</sup>

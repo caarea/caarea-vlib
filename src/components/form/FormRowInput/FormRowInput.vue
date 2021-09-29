@@ -1,6 +1,5 @@
 <template>
   <FormRow
-    class="mb-3"
     :label="label"
     :label-class="labelClass"
     :control-class="controlClass"
