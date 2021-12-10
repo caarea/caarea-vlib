@@ -7,7 +7,7 @@
     "brand_and_model": "Marque / modèle",
     "refine_the_search": "Affinez la recherche",
     "placeholder": {
-      "plate": "XX-999-XX",
+      "plate": "",
       "vin": "Saisissez le n° de serie VIN"
     },
     "button": {
