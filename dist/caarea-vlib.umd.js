@@ -21959,12 +21959,12 @@ var FormRowInput_component = normalizeComponent(
 // CONCATENATED MODULE: ./src/components/form/FormRowInput/index.js
 
 /* harmony default export */ var form_FormRowInput = (FormRowInput);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/form/FormRowSelect/FormRowSelect.vue?vue&type=template&id=25022a44&
-var FormRowSelectvue_type_template_id_25022a44_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('FormRow',{attrs:{"label":_vm.label,"label-class":_vm.labelClass,"control-class":_vm.controlClass,"for-id":_vm.getId,"required":_vm.required,"inline":_vm.labelInline}},[_c('FormSelect',{attrs:{"name":_vm.name,"label":_vm.label,"selected-option":_vm.selectedOption,"label-select-attr":"label","select-options":_vm.selectOptions,"errors":_vm.errors,"placeholder":_vm.placeholder,"disabled":_vm.disabled,"is-loading":_vm.isLoading,"allow-empty":_vm.allowEmpty,"empty-label":_vm.emptyLabel,"empty-value":_vm.emptyValue,"multiple":_vm.multiple},on:{"update:selected-option":_vm.updateValue}})],1)}
-var FormRowSelectvue_type_template_id_25022a44_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/form/FormRowSelect/FormRowSelect.vue?vue&type=template&id=4ec91aa7&
+var FormRowSelectvue_type_template_id_4ec91aa7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('FormRow',{attrs:{"label":_vm.label,"label-class":_vm.labelClass,"control-class":_vm.controlClass,"for-id":_vm.getId,"required":_vm.required,"inline":_vm.labelInline}},[_c('FormSelect',{attrs:{"name":_vm.name,"label":_vm.label,"selected-option":_vm.selectedOption,"label-select-attr":"label","label-options-order":_vm.labelOptionsOrder,"select-options":_vm.selectOptions,"errors":_vm.errors,"placeholder":_vm.placeholder,"disabled":_vm.disabled,"is-loading":_vm.isLoading,"allow-empty":_vm.allowEmpty,"empty-label":_vm.emptyLabel,"empty-value":_vm.emptyValue,"multiple":_vm.multiple},on:{"update:selected-option":_vm.updateValue}})],1)}
+var FormRowSelectvue_type_template_id_4ec91aa7_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/form/FormRowSelect/FormRowSelect.vue?vue&type=template&id=25022a44&
+// CONCATENATED MODULE: ./src/components/form/FormRowSelect/FormRowSelect.vue?vue&type=template&id=4ec91aa7&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/form/FormSelect/FormSelect.vue?vue&type=template&id=6fec83d8&scoped=true&
 var FormSelectvue_type_template_id_6fec83d8_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('multiselect',{class:{ 'is-invalid': _vm.hasError },attrs:{"value":_vm.multiselectSelectedOption,"show-labels":false,"options":_vm.multiSelectOptions,"placeholder":_vm.placeholder,"label":_vm.labelSelectAttr,"track-by":_vm.labelSelectAttr,"data-cy":_vm.name + '-select',"disabled":_vm.disabled,"allow-empty":_vm.allowEmpty,"loading":_vm.isLoading,"multiple":_vm.multiple,"taggable":_vm.multiple},on:{"change":_vm.updateValue,"input":_vm.updateValue}}),(_vm.help && !_vm.error)?_c('small',{class:_vm.helperClass},[_vm._v(" "+_vm._s(_vm.help)+" ")]):_vm._e(),_c('div',{staticClass:"invalid-feedback",attrs:{"data-cy":_vm.name + '-error'}},[_vm._v(" "+_vm._s(_vm.error)+" ")])],1)}
@@ -22289,6 +22289,7 @@ var FormSelect_component = normalizeComponent(
 //
 //
 //
+//
 
 
 
@@ -22307,6 +22308,11 @@ var FormSelect_component = normalizeComponent(
     labelSelectAttr: {
       type: String,
       required: true
+    },
+    // order option label
+    labelOptionsOrder: {
+      type: Boolean,
+      "default": true
     },
     // Show/hide the loading spinner
     isLoading: {
@@ -22352,8 +22358,8 @@ var FormSelect_component = normalizeComponent(
 
 var FormRowSelect_component = normalizeComponent(
   FormRowSelect_FormRowSelectvue_type_script_lang_js_,
-  FormRowSelectvue_type_template_id_25022a44_render,
-  FormRowSelectvue_type_template_id_25022a44_staticRenderFns,
+  FormRowSelectvue_type_template_id_4ec91aa7_render,
+  FormRowSelectvue_type_template_id_4ec91aa7_staticRenderFns,
   false,
   null,
   null,
