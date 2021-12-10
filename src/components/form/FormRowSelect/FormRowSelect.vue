@@ -12,6 +12,7 @@
       :label="label"
       :selected-option="selectedOption"
       label-select-attr="label"
+      :label-options-order="labelOptionsOrder"
       :select-options="selectOptions"
       :errors="errors"
       :placeholder="placeholder"
@@ -41,6 +42,8 @@ export default {
     selectOptions: Object,
     // select options attribute to use for select label
     labelSelectAttr: { type: String, required: true },
+    // order option label
+    labelOptionsOrder: { type: Boolean, default: true },
     // Show/hide the loading spinner
     isLoading: { type: Boolean, default: false },
     // allowEmpty

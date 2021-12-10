@@ -2,12 +2,12 @@
   "search": {
     "title": "Select a vehicle",
     "by_plate": "By plate number",
-    "by_vin": "By VIN",
-    "by_manual_search": "By direct search",
-    "brand_and_model": "Make / model",
+    "by_vin": "By VIN number",
+    "by_manual_search": "By manual search",
+    "brand_and_model": "Brand / model",
     "refine_the_search": "Refine the search",
     "placeholder": {
-      "plate": "XX-999-XX",
+      "plate": "",
       "vin": "Enter the VIN serial number"
     },
     "button": {
