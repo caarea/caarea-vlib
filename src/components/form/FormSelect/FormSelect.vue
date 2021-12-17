@@ -37,7 +37,7 @@ export default {
   props: {
     selectedOption: [String, Array],
     // selection options
-    selectOptions: Object,
+    selectOptions: [Object, Array],
     // select options attribute to use for select label
     labelSelectAttr: { type: String, default: "label" },
     // order option label
@@ -55,17 +55,30 @@ export default {
   },
   computed: {
     multiSelectOptions() {
-      let options = Object.keys(this.selectOptions).reduce((acc, o) => {
-        acc.push({ key: o, label: this.selectOptions[o] })
-        return acc
-      }, [])
-      if (this.labelOptionsOrder) {
-        options.sort((a, b) => {
-          return a.label.localeCompare(b.label, undefined, {
-            numeric: true,
-            sensitivity: "base",
-          })
+      let options = []
+      if (Array.isArray(this.selectOptions)) {
+        options = this.selectOptions
+        options.forEach((option) => {
+          const arrayOption = Object.keys(option).reduce((acc, o) => {
+            acc.push({ key: o, label: option[o] })
+            return acc
+          }, [])
+          option.key = arrayOption[0].key
+          option.label = arrayOption[0].label
         })
+      } else {
+        options = Object.keys(this.selectOptions).reduce((acc, o) => {
+          acc.push({ key: o, label: this.selectOptions[o] })
+          return acc
+        }, [])
+        if (this.labelOptionsOrder) {
+          options.sort((a, b) => {
+            return a.label.localeCompare(b.label, undefined, {
+              numeric: true,
+              sensitivity: "base",
+            })
+          })
+        }
       }
 
       if (this.allowEmpty && this.emptyLabel) {
