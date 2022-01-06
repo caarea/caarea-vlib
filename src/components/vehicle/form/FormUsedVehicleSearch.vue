@@ -1,7 +1,10 @@
 <template>
-  <div class="bg-light d-flex flex-column">
-    <div class="border-bottom pb-3 mb-3" :data-cy="`search-by-${searchType}`">
-      {{ $t(`caareavlib.vehicle.search.by_${searchType}`) }}
+  <div class="bg-light d-flex flex-column" style="min-width: 268px">
+    <div :data-cy="`search-by-${searchType}`">
+      <p class="mb-1">{{ $t(`caareavlib.vehicle.search.by_${searchType}`) }}</p>
+      <div
+        style="width: 4rem; height: 1px; background-color: #1c2b4e; margin-bottom: 2rem"
+      ></div>
     </div>
     <div>
       <FormInput
@@ -19,7 +22,7 @@
     <div class="p-2 text-center mt-auto">
       <button
         type="button"
-        class="btn btn-primary mt-4"
+        class="btn btn-primary rounded mt-4"
         :disabled="isButtonDisable || isSearchLoading"
         :data-cy="`search-button-${searchType}`"
         @click.prevent="onSubmitButton"
@@ -30,7 +33,7 @@
           role="status"
           aria-hidden="true"
         ></span>
-        {{ $t("caareavlib.vehicle.search.button.search") }}
+        {{ $t("caareavlib.vehicle.search.button.validate") }}
       </button>
     </div>
   </div>
