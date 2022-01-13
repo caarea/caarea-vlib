@@ -1,8 +1,8 @@
 <template>
   <div class="p-3 form-vehicle-container">
-    <div class="row">
+    <div class="form-vehicle-left">
       <div
-        class="form-vehicle-input"
+        class="form-vehicle-input px-1"
         v-for="criteria in Object.keys(value.filters)"
         :key="criteria"
       >
@@ -37,13 +37,13 @@
         ></FormInput>
       </div>
     </div>
-    <div
-      class="btn btn-primary mx-auto mt-3 font-size-12"
+    <button
+      class="btn btn-primary font-size-12 mx-auto my-3"
       data-cy="vehicle-on-filter"
       @click.prevent="onFilter"
     >
       {{ $t("caareavlib.vehicle.search.filter") }}
-    </div>
+    </button>
   </div>
 </template>
 
