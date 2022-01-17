@@ -52,6 +52,8 @@ export default {
     emptyLabel: { type: String, default: null },
     // multiple select
     multiple: { type: Boolean, default: false },
+    // disabled
+    disabled: { type: Boolean, default: false },
   },
   computed: {
     multiSelectOptions() {

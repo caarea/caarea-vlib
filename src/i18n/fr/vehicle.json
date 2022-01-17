@@ -43,8 +43,11 @@
     "make": "Marque",
     "model": "Modèle",
     "energy": "Énergie",
+    "version": "Version",
+    "trim_level": "Finition",
     "fiscal_hp": "Puissance fiscale",
     "all_make": "Toutes",
+    "all_version": "Toutes",
     "all_model": "Tous",
     "all_energy": "Toutes"
   }

@@ -14,6 +14,8 @@
         label-select-attr="label"
         :allow-empty="true"
         :empty-label="$t(`caareavlib.vehicle.search.all_${criteria}`)"
+        :multiple="true"
+        :disabled="Object.keys(value.filters[criteria].choices).length === 0"
         @update:selected-option="
           $emit('filter-input', criteria, value.filters[criteria])
         "
