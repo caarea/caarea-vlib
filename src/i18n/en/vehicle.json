@@ -48,6 +48,7 @@
     "trim_level": "Trim level",
     "fiscal_hp": "Fiscal power",
     "all_make": "All",
+    "all_trim_level": "All",
     "all_model": "All",
     "all_energy": "All"
   }
