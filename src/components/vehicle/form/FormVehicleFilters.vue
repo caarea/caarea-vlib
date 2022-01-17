@@ -37,13 +37,15 @@
         ></FormInput>
       </div>
     </div>
-    <button
-      class="btn btn-primary font-size-12 mx-auto my-3"
-      data-cy="vehicle-on-filter"
-      @click.prevent="onFilter"
-    >
-      {{ $t("caareavlib.vehicle.search.filter") }}
-    </button>
+    <div class="d-flex align-self-end">
+      <button
+        class="btn btn-primary font-size-12 my-auto"
+        data-cy="vehicle-on-filter"
+        @click.prevent="onFilter"
+      >
+        {{ $t("caareavlib.vehicle.search.filter") }}
+      </button>
+    </div>
   </div>
 </template>
 
