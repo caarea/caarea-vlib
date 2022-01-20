@@ -39,11 +39,11 @@
     </div>
     <div class="d-flex align-self-end">
       <button
-        class="btn btn-primary font-size-12 my-auto"
-        data-cy="vehicle-on-filter"
-        @click.prevent="onFilter"
+        class="btn btn-outline-secondary font-size-11 p-1 ml-4"
+        data-cy="vehicle-reset-filters"
+        @click.prevent="onEraseFilters"
       >
-        {{ $t("caareavlib.vehicle.search.filter") }}
+        {{ $t("caareavlib.vehicle.search.erase_filters") }}
       </button>
     </div>
   </div>
@@ -73,9 +73,18 @@ export default {
       }
       return err
     },
-    onFilter() {
+    onEraseFilters() {
+      for (const filter in this.value.filters) {
+        if (Array.isArray(this.value.filters[filter].value)) {
+          // noinspection JSUnfilteredForInLoop
+          this.value.filters[filter].value = []
+        } else {
+          // noinspection JSUnfilteredForInLoop
+          this.value.filters[filter].value = ""
+        }
+      }
       this.$emit("input", this.value)
-      this.$emit("on-filter")
+      this.$emit("reset-filters")
     },
   },
 }
