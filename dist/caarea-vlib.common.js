@@ -22982,14 +22982,22 @@ var VehicleSearchResultItem_component = normalizeComponent(
 )
 
 /* harmony default export */ var VehicleSearchResultItem = (VehicleSearchResultItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=156c2332&scoped=true&
-var FormVehicleFiltersvue_type_template_id_156c2332_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"p-3 d-flex flex-column"},[_c('div',{staticClass:"border-bottom mb-4 pb-3"},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.refine_the_search"))+" ")]),_vm._l((Object.keys(_vm.value.filters)),function(criteria){return _c('div',{key:criteria},[_c('div',{staticClass:"my-1"},[_vm._v(_vm._s(_vm.$t(("caareavlib.vehicle.search." + criteria))))]),(_vm.value.filters[criteria].inputType === 'select')?_c('FormSelect',{key:criteria,attrs:{"name":("filter-" + criteria),"select-options":_vm.value.filters[criteria].choices,"selected-option":_vm.value.filters[criteria].value,"label-select-attr":"label","allow-empty":true,"empty-label":_vm.$t(("caareavlib.vehicle.search.all_" + criteria)),"multiple":true,"disabled":Object.keys(_vm.value.filters[criteria].choices).length === 0},on:{"update:selectedOption":function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},"update:selected-option":[function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}]}}):_c('FormInput',{attrs:{"label":_vm.$t('caareavlib.vehicle.search.model_year'),"debounce-input":true,"name":("filter-" + criteria),"label-class":['col-2'],"type":_vm.value.filters[criteria].inputType,"errors":_vm.filterErrors(criteria)},on:{"input":function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}},model:{value:(_vm.value.filters[criteria].value),callback:function ($$v) {_vm.$set(_vm.value.filters[criteria], "value", $$v)},expression:"value.filters[criteria].value"}})],1)}),_c('div',{staticClass:"btn btn-outline-secondary mx-auto mt-3 font-size-12",attrs:{"data-cy":"vehicle-reset-filters"},on:{"click":function($event){$event.preventDefault();return _vm.onEraseFilters($event)}}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.erase_filters"))+" ")])],2)}
-var FormVehicleFiltersvue_type_template_id_156c2332_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=332a815a&scoped=true&
+var FormVehicleFiltersvue_type_template_id_332a815a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"p-3 form-vehicle-container"},[_c('div',{staticClass:"form-vehicle-left"},_vm._l((Object.keys(_vm.value.filters)),function(criteria){return _c('div',{key:criteria,staticClass:"form-vehicle-input px-1"},[_c('div',{staticClass:"my-1 form-vehicle__label"},[_vm._v(" "+_vm._s(_vm.$t(("caareavlib.vehicle.search." + criteria)))+" ")]),(_vm.value.filters[criteria].inputType === 'select')?_c('FormSelect',{key:criteria,attrs:{"name":("filter-" + criteria),"select-options":_vm.value.filters[criteria].choices,"selected-option":_vm.value.filters[criteria].value,"label-select-attr":"label","allow-empty":true,"empty-label":_vm.$t(("caareavlib.vehicle.search.all_" + criteria)),"multiple":true,"disabled":Object.keys(_vm.value.filters[criteria].choices).length === 0},on:{"update:selectedOption":function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},"update:selected-option":[function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}]}}):_c('FormInput',{attrs:{"label":_vm.$t('caareavlib.vehicle.search.model_year'),"debounce-input":true,"name":("filter-" + criteria),"label-class":['col-2'],"type":_vm.value.filters[criteria].inputType,"errors":_vm.filterErrors(criteria)},on:{"input":function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}},model:{value:(_vm.value.filters[criteria].value),callback:function ($$v) {_vm.$set(_vm.value.filters[criteria], "value", $$v)},expression:"value.filters[criteria].value"}})],1)}),0),_c('div',{staticClass:"d-flex align-self-end"},[_c('button',{staticClass:"btn btn-outline-secondary font-size-11 p-1",attrs:{"data-cy":"vehicle-reset-filters"},on:{"click":function($event){$event.preventDefault();return _vm.onEraseFilters($event)}}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.erase_filters"))+" ")])])])}
+var FormVehicleFiltersvue_type_template_id_332a815a_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=156c2332&scoped=true&
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=332a815a&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -23066,8 +23074,13 @@ var FormVehicleFiltersvue_type_template_id_156c2332_scoped_true_staticRenderFns 
     },
     onEraseFilters: function onEraseFilters() {
       for (var filter in this.value.filters) {
-        // noinspection JSUnfilteredForInLoop
-        this.value.filters[filter].value = null;
+        if (Array.isArray(this.value.filters[filter].value)) {
+          // noinspection JSUnfilteredForInLoop
+          this.value.filters[filter].value = [];
+        } else {
+          // noinspection JSUnfilteredForInLoop
+          this.value.filters[filter].value = "";
+        }
       }
 
       this.$emit("input", this.value);
@@ -23087,11 +23100,11 @@ var FormVehicleFiltersvue_type_template_id_156c2332_scoped_true_staticRenderFns 
 
 var FormVehicleFilters_component = normalizeComponent(
   form_FormVehicleFiltersvue_type_script_lang_js_,
-  FormVehicleFiltersvue_type_template_id_156c2332_scoped_true_render,
-  FormVehicleFiltersvue_type_template_id_156c2332_scoped_true_staticRenderFns,
+  FormVehicleFiltersvue_type_template_id_332a815a_scoped_true_render,
+  FormVehicleFiltersvue_type_template_id_332a815a_scoped_true_staticRenderFns,
   false,
   null,
-  "156c2332",
+  "332a815a",
   null
   
 )

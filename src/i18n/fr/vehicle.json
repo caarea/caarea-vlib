@@ -40,6 +40,7 @@
     "hybride": "hybride",
     "horsepower": "Cv",
     "erase_filters": "Effacer les filtres",
+    "filter": "Filtrer",
     "make": "Marque",
     "model": "Modèle",
     "energy": "Énergie",
@@ -47,6 +48,7 @@
     "trim_level": "Finition",
     "fiscal_hp": "Puissance fiscale",
     "all_make": "Toutes",
+    "all_trim_level": "Toutes",
     "all_version": "Toutes",
     "all_model": "Tous",
     "all_energy": "Toutes"
