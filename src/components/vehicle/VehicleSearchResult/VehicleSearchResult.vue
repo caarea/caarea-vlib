@@ -5,13 +5,13 @@
       class="col-3"
       data-cy="vehicle-search-filters"
     >
-      <FormVehicleFilters
+      <VerticalFormVehicleFilters
         v-model="value"
         :errors="errors"
         @filter-input="onFilterInput"
         @reset-filters="onEraseFilters"
         class="bg-light"
-      ></FormVehicleFilters>
+      ></VerticalFormVehicleFilters>
     </div>
     <div class="col-9">
       <div class="bg-light p-3 d-flex justify-content-between">
@@ -46,13 +46,13 @@
 
 <script>
 import VehicleSearchResultItem from "@/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem"
-import FormVehicleFilters from "@/components/vehicle/form/FormVehicleFilters"
+import VerticalFormVehicleFilters from "@/components/vehicle/form/VerticalFormVehicleFilters"
 
 export default {
   name: "VehicleSearchResult",
   components: {
     VehicleSearchResultItem,
-    FormVehicleFilters,
+    VerticalFormVehicleFilters,
   },
   props: {
     value: { type: Object, required: true },
