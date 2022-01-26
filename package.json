@@ -1,6 +1,6 @@
 {
   "name": "caarea-vlib",
-  "version": "0.6.0",
+  "version": "0.6.8",
   "private": false,
   "main": "dist/caarea-vlib.umd.min.js",
   "unpkg": "dist/caarea-vlib.umd.min.js",
