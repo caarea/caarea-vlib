@@ -41,7 +41,7 @@
       </div>
       <button
         class="btn btn-outline-secondary font-size-11 p-1 ml-1"
-        style="max-height: 2.4rem; margin-top: 1.8rem"
+        style="max-height: 2.8rem; margin-top: 1.7rem"
         data-cy="vehicle-reset-filters"
         @click.prevent="onEraseFilters"
       >
