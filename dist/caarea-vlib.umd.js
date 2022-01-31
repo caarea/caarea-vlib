@@ -18250,7 +18250,7 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.12.0',
+  version: '3.12.1',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
@@ -18480,7 +18480,7 @@ var getterFor = function (TYPE) {
   };
 };
 
-if (NATIVE_WEAK_MAP) {
+if (NATIVE_WEAK_MAP || shared.state) {
   var store = shared.state || (shared.state = new WeakMap());
   var wmget = store.get;
   var wmhas = store.has;
@@ -19184,6 +19184,8 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 
 "use strict";
 
+/* eslint-disable regexp/no-assertion-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
+/* eslint-disable regexp/no-useless-quantifier -- testing */
 var regexpFlags = __webpack_require__("ad6d");
 var stickyHelpers = __webpack_require__("9f7f");
 var shared = __webpack_require__("5692");
@@ -19204,7 +19206,6 @@ var UPDATES_LAST_INDEX_WRONG = (function () {
 var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y || stickyHelpers.BROKEN_CARET;
 
 // nonparticipating capturing group, copied from es5-shim's String#split patch.
-// eslint-disable-next-line regexp/no-assertion-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing
 var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
 
 var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y;
@@ -20604,11 +20605,13 @@ module.exports = {
 // TODO: Remove from `core-js@4` since it's moved to entry points
 __webpack_require__("ac1f");
 var redefine = __webpack_require__("6eeb");
+var regexpExec = __webpack_require__("9263");
 var fails = __webpack_require__("d039");
 var wellKnownSymbol = __webpack_require__("b622");
 var createNonEnumerableProperty = __webpack_require__("9112");
 
 var SPECIES = wellKnownSymbol('species');
+var RegExpPrototype = RegExp.prototype;
 
 var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
   // #replace needs built-in support for named groups.
@@ -20696,7 +20699,8 @@ module.exports = function (KEY, length, exec, sham) {
   ) {
     var nativeRegExpMethod = /./[SYMBOL];
     var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
-      if (regexp.exec === RegExp.prototype.exec) {
+      var $exec = regexp.exec;
+      if ($exec === regexpExec || $exec === RegExpPrototype.exec) {
         if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
           // The native String method already delegates to @@method (this
           // polyfilled function), leasing to infinite recursion.
@@ -20714,7 +20718,7 @@ module.exports = function (KEY, length, exec, sham) {
     var regexMethod = methods[1];
 
     redefine(String.prototype, KEY, stringMethod);
-    redefine(RegExp.prototype, SYMBOL, length == 2
+    redefine(RegExpPrototype, SYMBOL, length == 2
       // 21.2.5.8 RegExp.prototype[@@replace](string, replaceValue)
       // 21.2.5.11 RegExp.prototype[@@split](string, limit)
       ? function (string, arg) { return regexMethod.call(string, this, arg); }
@@ -20724,7 +20728,7 @@ module.exports = function (KEY, length, exec, sham) {
     );
   }
 
-  if (sham) createNonEnumerableProperty(RegExp.prototype[SYMBOL], 'sham', true);
+  if (sham) createNonEnumerableProperty(RegExpPrototype[SYMBOL], 'sham', true);
 };
 
 
@@ -23341,15 +23345,17 @@ var VehicleSearchResultCard_component = normalizeComponent(
 // CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultCard/index.js
 
 /* harmony default export */ var vehicle_VehicleSearchResultCard = (VehicleSearchResultCard);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=9e3197a2&scoped=true&
-var FormVehicleFiltersvue_type_template_id_9e3197a2_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"p-3 form-vehicle-container"},[_c('div',{staticClass:"form-vehicle-left"},_vm._l((Object.keys(_vm.value.filters)),function(criteria){return _c('div',{key:criteria,staticClass:"form-vehicle-input px-1"},[_c('div',{staticClass:"my-1 form-vehicle__label"},[_vm._v(" "+_vm._s(_vm.$t(("caareavlib.vehicle.search." + criteria)))+" ")]),(_vm.value.filters[criteria].inputType === 'select')?_c('FormSelect',{key:criteria,attrs:{"name":("filter-" + criteria),"select-options":_vm.value.filters[criteria].choices,"selected-option":_vm.value.filters[criteria].value,"label-select-attr":"label","allow-empty":true,"empty-label":_vm.$t(("caareavlib.vehicle.search.all_" + criteria)),"multiple":true,"disabled":Object.keys(_vm.value.filters[criteria].choices).length === 0},on:{"update:selectedOption":function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},"update:selected-option":[function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}]}}):_c('FormInput',{attrs:{"label":_vm.$t('caareavlib.vehicle.search.model_year'),"debounce-input":true,"name":("filter-" + criteria),"label-class":['col-2'],"type":_vm.value.filters[criteria].inputType,"errors":_vm.filterErrors(criteria)},on:{"input":function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}},model:{value:(_vm.value.filters[criteria].value),callback:function ($$v) {_vm.$set(_vm.value.filters[criteria], "value", $$v)},expression:"value.filters[criteria].value"}})],1)}),0),_c('div',{staticClass:"d-flex align-self-end"},[_c('button',{staticClass:"btn btn-outline-secondary font-size-11 p-1 ml-4",attrs:{"data-cy":"vehicle-reset-filters"},on:{"click":function($event){$event.preventDefault();return _vm.onEraseFilters($event)}}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.erase_filters"))+" ")])])])}
-var FormVehicleFiltersvue_type_template_id_9e3197a2_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1e59fa4b-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=33cdae48&scoped=true&
+var FormVehicleFiltersvue_type_template_id_33cdae48_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"p-3 form-vehicle-container"},[_c('div',{staticClass:"form-vehicle-left"},_vm._l((Object.keys(_vm.value.filters)),function(criteria){return _c('div',{key:criteria,staticClass:"form-vehicle-input px-1"},[_c('div',{staticClass:"my-1 form-vehicle__label"},[_vm._v(" "+_vm._s(_vm.$t(("caareavlib.vehicle.search." + criteria)))+" ")]),(_vm.value.filters[criteria].inputType === 'select')?_c('FormSelect',{key:criteria,attrs:{"name":("filter-" + criteria),"select-options":_vm.value.filters[criteria].choices,"selected-option":_vm.value.filters[criteria].value,"label-select-attr":"label","allow-empty":true,"multiple":true,"disabled":Object.keys(_vm.value.filters[criteria].choices).length === 0,"placeholder":_vm.value.filters[criteria].value.length === 0 ? _vm.getEmptyLabel(criteria) : ''},on:{"update:selectedOption":function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},"update:selected-option":[function($event){return _vm.$set(_vm.value.filters[criteria], "value", $event)},function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}]}}):_c('FormInput',{attrs:{"label":_vm.$t('caareavlib.vehicle.search.model_year'),"debounce-input":true,"name":("filter-" + criteria),"label-class":['col-2'],"type":_vm.value.filters[criteria].inputType,"errors":_vm.filterErrors(criteria)},on:{"input":function($event){return _vm.$emit('filter-input', criteria, _vm.value.filters[criteria])}},model:{value:(_vm.value.filters[criteria].value),callback:function ($$v) {_vm.$set(_vm.value.filters[criteria], "value", $$v)},expression:"value.filters[criteria].value"}})],1)}),0),_c('div',{staticClass:"d-flex align-self-end"},[_c('button',{staticClass:"btn btn-outline-secondary font-size-11 p-1 ml-4",attrs:{"data-cy":"vehicle-reset-filters"},on:{"click":function($event){$event.preventDefault();return _vm.onEraseFilters($event)}}},[_vm._v(" "+_vm._s(_vm.$t("caareavlib.vehicle.search.erase_filters"))+" ")])])])}
+var FormVehicleFiltersvue_type_template_id_33cdae48_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=9e3197a2&scoped=true&
+// CONCATENATED MODULE: ./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=template&id=33cdae48&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/form/FormVehicleFilters.vue?vue&type=script&lang=js&
 
+//
+//
 //
 //
 //
@@ -23422,6 +23428,9 @@ var FormVehicleFiltersvue_type_template_id_9e3197a2_scoped_true_staticRenderFns 
     }
   },
   methods: {
+    getEmptyLabel: function getEmptyLabel(criteria) {
+      return this.$t("caareavlib.vehicle.search.all_".concat(criteria));
+    },
     filterErrors: function filterErrors(criteria) {
       var err = {};
 
@@ -23433,6 +23442,7 @@ var FormVehicleFiltersvue_type_template_id_9e3197a2_scoped_true_staticRenderFns 
     },
     onEraseFilters: function onEraseFilters() {
       for (var filter in this.value.filters) {
+        // noinspection JSUnfilteredForInLoop
         if (Array.isArray(this.value.filters[filter].value)) {
           // noinspection JSUnfilteredForInLoop
           this.value.filters[filter].value = [];
@@ -23459,11 +23469,11 @@ var FormVehicleFiltersvue_type_template_id_9e3197a2_scoped_true_staticRenderFns 
 
 var FormVehicleFilters_component = normalizeComponent(
   form_FormVehicleFiltersvue_type_script_lang_js_,
-  FormVehicleFiltersvue_type_template_id_9e3197a2_scoped_true_render,
-  FormVehicleFiltersvue_type_template_id_9e3197a2_scoped_true_staticRenderFns,
+  FormVehicleFiltersvue_type_template_id_33cdae48_scoped_true_render,
+  FormVehicleFiltersvue_type_template_id_33cdae48_scoped_true_staticRenderFns,
   false,
   null,
-  "9e3197a2",
+  "33cdae48",
   null
   
 )
