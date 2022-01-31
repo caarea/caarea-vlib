@@ -17,9 +17,11 @@
           :selected-option.sync="value.filters[criteria].value"
           label-select-attr="label"
           :allow-empty="true"
-          :empty-label="$t(`caareavlib.vehicle.search.all_${criteria}`)"
           :multiple="true"
           :disabled="Object.keys(value.filters[criteria].choices).length === 0"
+          :placeholder="
+            value.filters[criteria].value.length === 0 ? getEmptyLabel(criteria) : ''
+          "
           @update:selected-option="
             $emit('filter-input', criteria, value.filters[criteria])
           "
@@ -66,6 +68,9 @@ export default {
     },
   },
   methods: {
+    getEmptyLabel(criteria) {
+      return this.$t(`caareavlib.vehicle.search.all_${criteria}`)
+    },
     filterErrors(criteria) {
       let err = {}
       if ("filters" in this.errors && criteria in this.errors.filters) {
@@ -75,6 +80,7 @@ export default {
     },
     onEraseFilters() {
       for (const filter in this.value.filters) {
+        // noinspection JSUnfilteredForInLoop
         if (Array.isArray(this.value.filters[filter].value)) {
           // noinspection JSUnfilteredForInLoop
           this.value.filters[filter].value = []
