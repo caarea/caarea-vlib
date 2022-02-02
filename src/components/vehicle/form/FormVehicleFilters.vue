@@ -6,42 +6,42 @@
         v-for="criteria in Object.keys(value.filters)"
         :key="criteria"
       >
-        <div class="my-1 form-vehicle__label">
-          {{ $t(`caareavlib.vehicle.search.${criteria}`) }}
-        </div>
-        <FormSelect
+        <FormRowSelect
           v-if="value.filters[criteria].inputType === 'select'"
           :name="`filter-${criteria}`"
+          :label="$t(`caareavlib.vehicle.search.${criteria}`)"
+          :label-inline="false"
           :key="criteria"
           :select-options="value.filters[criteria].choices"
           :selected-option.sync="value.filters[criteria].value"
           label-select-attr="label"
           :allow-empty="true"
-          :multiple="true"
-          :disabled="Object.keys(value.filters[criteria].choices).length === 0"
+          :empty-label="$t(`caareavlib.vehicle.search.all_${criteria}`)"
           :placeholder="
             value.filters[criteria].value.length === 0 ? getEmptyLabel(criteria) : ''
           "
+          :multiple="true"
+          :disabled="Object.keys(value.filters[criteria].choices).length === 0"
           @update:selected-option="
             $emit('filter-input', criteria, value.filters[criteria])
           "
-        ></FormSelect>
-        <FormInput
+        ></FormRowSelect>
+        <FormRowInput
           v-else
           v-model="value.filters[criteria].value"
-          :label="$t('caareavlib.vehicle.search.model_year')"
+          :label="$t(`caareavlib.vehicle.search.${criteria}`)"
+          :label-inline="false"
           :debounce-input="true"
           :name="`filter-${criteria}`"
           :label-class="['col-2']"
           :type="value.filters[criteria].inputType"
           :errors="filterErrors(criteria)"
           @input="$emit('filter-input', criteria, value.filters[criteria])"
-        ></FormInput>
+        ></FormRowInput>
       </div>
-    </div>
-    <div class="d-flex align-self-end">
       <button
-        class="btn btn-outline-secondary font-size-11 p-1 ml-4"
+        class="btn btn-outline-secondary font-size-11 p-1 ml-1"
+        style="max-height: 2.8rem; margin-top: 1.7rem"
         data-cy="vehicle-reset-filters"
         @click.prevent="onEraseFilters"
       >
@@ -50,14 +50,13 @@
     </div>
   </div>
 </template>
-
 <script>
-import FormInput from "@/components/form/FormInput/FormInput"
-import FormSelect from "@/components/form/FormSelect/FormSelect"
+import FormRowSelect from "../../form/FormRowSelect/FormRowSelect"
+import FormRowInput from "../../form/FormRowInput/FormRowInput"
 
 export default {
   name: "FormVehicleFilters",
-  components: { FormSelect, FormInput },
+  components: { FormRowInput, FormRowSelect },
   props: {
     value: { type: Object, required: true },
     errors: {
