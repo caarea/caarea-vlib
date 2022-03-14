@@ -6,6 +6,7 @@
       :name="name"
       :placeholder="placeholder"
       :class="[{ 'is-invalid': error }, inputClass]"
+      class="padding-space"
       :type="type"
       :maxlength="maxLength"
       :value="value"
@@ -13,6 +14,7 @@
       :disabled="disabled"
       @input="onInput"
       @keyup.enter="$emit('keyboard-enter', $event.target.value)"
+      style="height: 44px"
     />
     <div v-if="hasClearButton && value" class="input-group-append">
       <button class="btn btn-icon font-size-22 text-secondary">
