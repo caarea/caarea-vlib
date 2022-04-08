@@ -59,3 +59,25 @@ export default {
     
 ### Build the lib
 - Run : `yarn build`
+
+### Intégration caarea-vlib dans un nouveau projet Caarea
+
+- dans les dépendances du package.json :  ```"caarea-vlib": "git+https://github.com/caarea/caarea-vlib.git#0.7.1",```
+- Le css de caarea-vlib utilise du css bootstrap. Installer bootstrap sur le projet. Attention, il ne faut pas utiliser la version 5 de bootstrap. Bootstrap 4.6.0 fonctionne. 
+- Installer vue-multiselect : ````"vue-multiselect": "^2.1.6"````
+- ajouter le fichier ````vue-multiselect.scss```` dans src>assets>scss
+- vérifier la présence de toutes les variables nécessaires dans _variables.scss
+- Configurer src/assets/scss/app.scss
+  ```scss
+  @import "node_modules/bootstrap/scss/functions";
+  @import "variables"; // to override bootstrap's variables
+  @import "node_modules/bootstrap/scss/variables";
+  @import "node_modules/bootstrap/scss/mixins";
+  @import "node_modules/bootstrap/scss/bootstrap";
+  @import "mixins";
+  @import "vue-multiselect";
+  ```
+  
+
+
+
