@@ -4,7 +4,6 @@ export default {
     label: { type: String, default: null },
     labelInline: { type: Boolean, default: true },
     labelClass: { type: Array, default: () => ["col-sm-4", "text-right"] },
-    groupClass: { type: String, default: "row" },
     inputClass: { type: String, default: "form-control" },
     controlClass: { type: Array, default: () => ["col-sm-8"] },
     helperClass: { type: String, default: "form-text text-muted" },

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="inline" class="row">
+  <div v-if="inline" :class="[...groupClass]">
     <div v-if="label" :class="[...labelClass]">
       <label :for="forId" class="mb-0">
         {{ label }}
@@ -29,6 +29,7 @@ export default {
     forId: String,
     required: { type: Boolean, default: false },
     inline: { type: Boolean, default: true },
+    groupClass: { type: Array, default: () => ["row"] },
   },
 }
 </script>
