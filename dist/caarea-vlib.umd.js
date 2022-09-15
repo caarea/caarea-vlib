@@ -23999,12 +23999,12 @@ var VehicleSearchResultvue_type_template_id_69633e38_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResult/VehicleSearchResult.vue?vue&type=template&id=69633e38&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"42ab6cbf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=template&id=c9d79cc0&
-var VehicleSearchResultItemvue_type_template_id_c9d79cc0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vehicle-list-item-border row no-gutters justify-content-between align-items-center w-100 py-3",on:{"click":_vm.onButtonClick}},[(_vm.image)?_c('div',{staticClass:"col-2"},[_c('img',{attrs:{"src":_vm.image,"alt":"image"}})]):_vm._e(),_c('div',{staticClass:"col-4 result-name",attrs:{"data-cy":"search-result-name"}},[_vm._v(" "+_vm._s(_vm.vehicle.make)+" "+_vm._s(_vm.vehicle.model)+" "+_vm._s(_vm.vehicle.version)+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-energy"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.energy ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.energy))) : "--"))+" ")]),_c('div',{staticClass:"col-1 result-details text-center",attrs:{"data-cy":"search-result-item-fiscalhp"}},[_vm._v(" "+_vm._s(_vm.vehicle.fiscal_hp ? ((_vm.vehicle.fiscal_hp) + " " + (_vm.$t("caareavlib.vehicle.search.horsepower"))) : "--")+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-transmission"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.transmission ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.transmission))) : "--"))+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-year"}},[_vm._v(" "+_vm._s(_vm.vehicle.year ? _vm.vehicle.year : "--")+" ")]),(_vm.canValidate)?_c('div',{staticClass:"col-1 ml-auto text-right icon-fade"},[_c('i',{staticClass:"icon-chevron-right font-size-40",attrs:{"aria-hidden":"true"}})]):_vm._e()])}
-var VehicleSearchResultItemvue_type_template_id_c9d79cc0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"42ab6cbf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=template&id=008cacfa&
+var VehicleSearchResultItemvue_type_template_id_008cacfa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vehicle-list-item-border row no-gutters justify-content-between align-items-center w-100 py-3",on:{"click":_vm.onButtonClick}},[(_vm.image)?_c('div',{staticClass:"col-2"},[_c('img',{attrs:{"src":_vm.image,"alt":"image"}})]):_vm._e(),_c('div',{staticClass:"col-3 result-name",attrs:{"data-cy":"search-result-name"}},[_vm._v(" "+_vm._s(_vm.vehicle.make)+" "+_vm._s(_vm.vehicle.model)+" "+_vm._s(_vm.vehicle.version)+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-energy"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.energy ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.energy))) : "--"))+" ")]),_c('div',{staticClass:"col-1 result-details text-center",attrs:{"data-cy":"search-result-item-fiscalhp"}},[_vm._v(" "+_vm._s(_vm.vehicle.fiscal_hp ? ((_vm.vehicle.fiscal_hp) + " " + (_vm.$t("caareavlib.vehicle.search.horsepower"))) : "--")+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-transmission"}},[_vm._v(" "+_vm._s(_vm._f("capitalize")(_vm.vehicle.transmission ? _vm.$t(("caareavlib.vehicle.search." + (_vm.vehicle.transmission))) : "--"))+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-year"}},[_vm._v(" "+_vm._s(_vm.vehicle.model_year ? _vm.vehicle.model_year : "--")+" ")]),_c('div',{staticClass:"col-2 result-details text-center",attrs:{"data-cy":"search-result-item-id"}},[_vm._v(" "+_vm._s(_vm.vehicle.vehicle_id ? _vm.vehicle.vehicle_id : "--")+" ")]),(_vm.canValidate)?_c('div',{staticClass:"col-1 ml-auto text-right icon-fade"},[_c('i',{staticClass:"icon-chevron-right font-size-40",attrs:{"aria-hidden":"true"}})]):_vm._e()])}
+var VehicleSearchResultItemvue_type_template_id_008cacfa_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=template&id=c9d79cc0&
+// CONCATENATED MODULE: ./src/components/vehicle/VehicleSearchResultItem/VehicleSearchResultItem.vue?vue&type=template&id=008cacfa&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.date.to-string.js
 var es_date_to_string = __webpack_require__("0d03");
@@ -24018,6 +24018,9 @@ var es_regexp_to_string = __webpack_require__("25f0");
 
 
 
+//
+//
+//
 //
 //
 //
@@ -24103,8 +24106,8 @@ var es_regexp_to_string = __webpack_require__("25f0");
 
 var VehicleSearchResultItem_component = normalizeComponent(
   VehicleSearchResultItem_VehicleSearchResultItemvue_type_script_lang_js_,
-  VehicleSearchResultItemvue_type_template_id_c9d79cc0_render,
-  VehicleSearchResultItemvue_type_template_id_c9d79cc0_staticRenderFns,
+  VehicleSearchResultItemvue_type_template_id_008cacfa_render,
+  VehicleSearchResultItemvue_type_template_id_008cacfa_staticRenderFns,
   false,
   null,
   null,
