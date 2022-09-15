@@ -6,7 +6,7 @@
     <div v-if="image" class="col-2">
       <img :src="image" alt="image" />
     </div>
-    <div class="col-4 result-name" data-cy="search-result-name">
+    <div class="col-3 result-name" data-cy="search-result-name">
       {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.version }}
     </div>
     <div class="col-2 result-details text-center" data-cy="search-result-item-energy">
@@ -34,7 +34,10 @@
       }}
     </div>
     <div class="col-2 result-details text-center" data-cy="search-result-item-year">
-      {{ vehicle.year ? vehicle.year : "--" }}
+      {{ vehicle.model_year ? vehicle.model_year : "--" }}
+    </div>
+    <div class="col-2 result-details text-center" data-cy="search-result-item-id">
+      {{ vehicle.vehicle_id ? vehicle.vehicle_id : "--" }}
     </div>
     <div v-if="canValidate" class="col-1 ml-auto text-right icon-fade">
       <i class="icon-chevron-right font-size-40" aria-hidden="true"></i>
