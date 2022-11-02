@@ -20,7 +20,7 @@
     <small v-if="help && !error" :class="helperClass">
       {{ help }}
     </small>
-    <div class="invalid-feedback" :data-cy="name + '-error'">
+    <div v-if="error" class="invalid-feedback" :data-cy="name + '-error'">
       {{ error }}
     </div>
   </div>
