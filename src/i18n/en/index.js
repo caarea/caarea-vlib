@@ -1,2 +1,3 @@
 import vehicle from "./vehicle.json"
-export default { vehicle }
+import form from "./form.json"
+export default { vehicle, form }

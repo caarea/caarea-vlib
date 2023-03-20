@@ -16,7 +16,9 @@
       :taggable="multiple"
       @change="updateValue"
       @input="updateValue"
-    />
+    >
+      <span slot="noOptions">{{ $t("caareavlib.form.rowSelect.emptySelect") }}</span>
+    </multiselect>
     <small v-if="help && !error" :class="helperClass">
       {{ help }}
     </small>
