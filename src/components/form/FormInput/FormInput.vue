@@ -12,6 +12,8 @@
       :value="value"
       :data-cy="`input-${name}`"
       :disabled="disabled"
+      :min="min"
+      :max="max"
       @input="onInput"
       @keyup.enter="$emit('keyboard-enter', $event.target.value)"
       style="height: 44px"
@@ -40,6 +42,8 @@ export default {
   props: {
     value: { type: [Number, String] },
     type: { type: String, default: "text" },
+    min: { type: String, default: "" },
+    max: { type: String, default: "" },
     maxLength: { type: Number, default: null },
     placeholder: { type: String, default: "" },
     name: { type: String, required: true },
