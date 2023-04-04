@@ -42,8 +42,8 @@ export default {
   props: {
     value: { type: [Number, String] },
     type: { type: String, default: "text" },
-    min: { type: String, default: "" },
-    max: { type: String, default: "" },
+    min: { type: Number, default: null },
+    max: { type: Number, default: null },
     maxLength: { type: Number, default: null },
     placeholder: { type: String, default: "" },
     name: { type: String, required: true },
