@@ -39,7 +39,7 @@ export default {
   props: {
     selectedOption: [String, Array],
     // selection options
-    selectOptions: Object,
+    selectOptions: [Object, Array],
     // select options attribute to use for select label
     labelSelectAttr: { type: String, required: true },
     // order option label
