@@ -1,0 +1,34 @@
+{
+  "fr": {
+    "currency": {
+      "style": "currency",
+      "currency": "EUR"
+    },
+    "cash_pricing": {
+      "style": "currency",
+      "minimumFractionDigits": 0,
+      "maximumFractionDigits": 0
+    },
+    "monthly_pricing": {
+      "style": "currency",
+      "minimumFractionDigits": 2,
+      "maximumFractionDigits": 2
+    }
+  },
+  "en": {
+    "currency": {
+      "style": "currency",
+      "currency": "EUR"
+    },
+    "cash_pricing": {
+      "style": "currency",
+      "minimumFractionDigits": 0,
+      "maximumFractionDigits": 0
+    },
+    "monthly_pricing": {
+      "style": "currency",
+      "minimumFractionDigits": 2,
+      "maximumFractionDigits": 2
+    }
+  }
+}

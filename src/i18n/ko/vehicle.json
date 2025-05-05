@@ -1,0 +1,56 @@
+{
+  "search": {
+    "title": "차량 선택",
+    "by_plate": "번호판별",
+    "by_vin": "섀시 번호별",
+    "by_manual_search": "직접 검색으로",
+    "brand_and_model": "제조사/모델",
+    "refine_the_search": "검색 구체화",
+    "placeholder": {
+      "plate": "",
+      "vin": "VIN 일련 번호를 입력합니다."
+    },
+    "button": {
+      "search": "검색",
+      "modify_search": "검색 수정하기",
+      "modify_version": "버전 변경",
+      "validate": "유효성 검사",
+      "next": "다음"
+    },
+    "help": {
+      "velastic": "ex: Volkswagen Touran 1.5 TSI EVO Lounge 7 places"
+    },
+    "error": {
+      "number": "유효한 번호를 입력하세요."
+    },
+    "pick_version": "다음 결과 중 하나를 선택합니다.",
+    "results_for": "에 대한 결과",
+    "no_results": "결과 없음",
+    "km": "마일리지",
+    "age": "나이",
+    "year": "연도",
+    "month": "월",
+    "price": "수상 경력",
+    "automatic": "자동",
+    "manual": "매뉴얼",
+    "essence": "가솔린",
+    "diesel": "디젤",
+    "electrique": "전기",
+    "gpl": "액화석유가스",
+    "hybride": "하이브리드",
+    "horsepower": "마력",
+    "erase_filters": "필터 삭제",
+    "filter": "필터",
+    "make": "브랜드",
+    "model": "모델",
+    "energy": "에너지",
+    "version": "버전",
+    "trim_level": "완료",
+    "fiscal_hp": "재정 능력",
+    "all_make": "모두",
+    "all_trim_level": "모두",
+    "all_version": "모두",
+    "all_model": "모두",
+    "all_energy": "모두"
+  }
+}

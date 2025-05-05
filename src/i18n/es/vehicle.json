@@ -1,0 +1,56 @@
+{
+  "search": {
+    "title": "Seleccione un vehículo",
+    "by_plate": "Por matrícula",
+    "by_vin": "Por número de chasis",
+    "by_manual_search": "Por búsqueda directa",
+    "brand_and_model": "Marca / modelo",
+    "refine_the_search": "Refinar la búsqueda",
+    "placeholder": {
+      "plate": "",
+      "vin": "Introduzca el número de serie del VIN"
+    },
+    "button": {
+      "search": "Buscar en",
+      "modify_search": "Modificar la búsqueda",
+      "modify_version": "Cambiar la versión",
+      "validate": "Validar",
+      "next": "Siguiente"
+    },
+    "help": {
+      "velastic": "ex: Volkswagen Touran 1.5 TSI EVO Lounge 7 places"
+    },
+    "error": {
+      "number": "Introduzca un número válido"
+    },
+    "pick_version": "Seleccione uno de los resultados",
+    "results_for": "resultados para",
+    "no_results": "Sin resultados",
+    "km": "Kilometraje",
+    "age": "Edad",
+    "year": "Año",
+    "month": "Mes",
+    "price": "Premios",
+    "automatic": "Automático",
+    "manual": "Manual",
+    "essence": "gasolina",
+    "diesel": "diesel",
+    "electrique": "eléctrico",
+    "gpl": "glp",
+    "hybride": "híbrido",
+    "horsepower": "potencia",
+    "erase_filters": "Borrar filtros",
+    "filter": "Filtro",
+    "make": "Marca",
+    "model": "Modelo",
+    "energy": "Energía",
+    "version": "Versión",
+    "trim_level": "Acabado",
+    "fiscal_hp": "Poder fiscal",
+    "all_make": "Todos",
+    "all_trim_level": "Todos",
+    "all_version": "Todos",
+    "all_model": "Todos",
+    "all_energy": "Todos"
+  }
+}
