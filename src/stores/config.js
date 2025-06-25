@@ -1,16 +1,25 @@
-import i18n from "../i18n"
 import axios from "axios"
 const localStorageName = "cs-lang"
 
 // STATES (snake_case)
 const state = {
   current_lang: null,
+  i18n: null,
 }
 
 // MUTATIONS (SNAKE_CASE)
 const mutations = {
   SET_CURRENT_LANGUAGE: (state, lang) => {
     state.current_lang = lang
+    if (!state.i18n) {
+      throw Error(
+        "You should initialize i18n with 'dispatch(\"config/initI18n\")' first",
+      )
+    }
+    state.i18n.global.locale.value = lang
+  },
+  SET_I18N: (state, i18n) => {
+    state.i18n = i18n
   },
 }
 
@@ -19,12 +28,12 @@ const actions = {
   _setLang({ commit }, lang) {
     // console.log("setLang", lang)
     localStorage.setItem(localStorageName, lang)
-    i18n.global.locale.value = lang
     axios.defaults.headers.common["Accept-Language"] = lang
     document.querySelector("html").setAttribute("lang", lang)
     commit("SET_CURRENT_LANGUAGE", lang)
   },
-  initI18n({ dispatch }) {
+  initI18n({ dispatch, commit }, i18n) {
+    commit("SET_I18N", i18n)
     const lang =
       localStorage.getItem(localStorageName) ||
       navigator.language.slice(0, 2) ||
@@ -51,8 +60,8 @@ const actions = {
 const getters = {
   getCurrentLang: (state) => state.current_lang,
   // isLangAvailable: (state) => (lang) => i18n.global.availableLocales.includes(lang),
-  isLangAvailable: () => (lang) => i18n.global.availableLocales.includes(lang),
-  availableLangs: () => i18n.global.availableLocales,
+  isLangAvailable: () => (lang) => state.i18n.global.availableLocales.includes(lang),
+  availableLangs: () => state.i18n.global.availableLocales,
 }
 
 export default {

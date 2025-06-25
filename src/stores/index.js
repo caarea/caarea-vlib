@@ -1,2 +1,5 @@
 export { default as authStore } from "./auth"
 export { default as configStore } from "./config"
+export { useAuthStore } from "./pinia/auth"
+// export { useConfigStore } from "./pinia/config"
+export { configStorePinia } from "./pinia/config"

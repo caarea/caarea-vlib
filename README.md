@@ -53,6 +53,18 @@ export default {
 - Build the lib : `yarn build`
 - Once setup / README is done, run `yarn link`
 - Then, in your front project, run `yarn link "caarea-vlib"` to use it as a local dependency
+- then add in vite.config.js to avoid vite optimization on the lib :
+```javascript
+import {defineConfig, ViteDevServer} from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+    optimizeDeps: {
+        exclude: ["caarea-vlib"],
+    },
+})
+```
 - To stop using the lib as a local dependency : 
   - in your front project : run `yarn unlink "caarea-vlib"`, then run `yarn install --force` to reinstall the lib. You might have to re-serve your app.
   - in the caarea-vlib project : run `yarn unlink`
@@ -78,6 +90,11 @@ export default {
   @import "vue-multiselect";
   ```
   
-
+## Bug
+### [vite:vue] Failed to resolve vue/compiler-sfc.
+Fixé en installant dans devDependencies
+```bash
+"vue/compiler-sfc": "npm:@vue/compiler-sfc@^3",
+```
 
 

@@ -28,8 +28,7 @@
 
 <script setup>
 import { toRef } from "vue"
-import FormSelect from "./"
-import FormRow from "./"
+import { FormRow, FormSelect } from "./index.js"
 import { useFormCommon } from "./composables/formCommon.js"
 import { commonProps } from "./_commonProps"
 

@@ -1,16 +1,21 @@
 import * as components from "./components"
-export * from "./components"
+
+// import { Spinner } from "./components"
+
+// import Spinner from "./components/Spinner.vue"
 
 function install(app, options) {
-  if (!options || (!"i18n_translate") in options) {
+  if (!options || (!"i18n_global") in options) {
     throw new Error(
-      "CaareaVlibPlugin error: i18n_translate is not defined, please provide it in options" +
-        " (ex: app.use(CaareaVlibPlugin, { i18n_translate: i18n.global.t }))",
+      "CaareaVlibPlugin error: i18n_global is not defined, please provide it in options" +
+        " (ex: app.use(CaareaVlibPlugin, { i18n_global: i18n.global }))",
     )
   }
-  // BeneficiaryCriteriaService.setI18n(options.i18n_translate)
-  app.provide("i18n", options.i18n_translate)
+  // BeneficiaryCriteriaService.setI18n(options.i18n_global)
+  // PricingService.setI18n(options.i18n_global)
+  app.provide("i18n", options.i18n_global.t)
   for (const key in components) {
+    // console.log("register", key, components[key])
     app.component(key, components[key])
   }
 }

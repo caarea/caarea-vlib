@@ -6,8 +6,8 @@ class BeneficiaryCriteria extends AbstractService {
     this._i18n_t = null
   }
 
-  setI18n(i18n_t) {
-    this._i18n_t = i18n_t
+  setI18n(i18n) {
+    this._i18n_t = i18n.t
   }
 
   hasCoverageCriteria(beneficiaryCriteria) {

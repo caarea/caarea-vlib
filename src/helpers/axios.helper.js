@@ -2,12 +2,10 @@ import axios from "axios"
 import { SsoService } from "../services"
 
 export default {
-  initialize() {
+  initialize(endpoint, vueRouter, ssoClientId = null) {
     axios.defaults.withCredentials = true
-    axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT
-    axios.defaults.headers.common["Sso-Client-Id"] = import.meta.env.VITE_SSO_CLIENT_ID
-    // axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT
-    // axios.defaults.headers.common["Sso-Client-Id"] = import.meta.env.VITE_SSO_CLIENT_ID
+    axios.defaults.baseURL = endpoint
+    axios.defaults.headers.common["Sso-Client-Id"] = ssoClientId
     axios.interceptors.request.use(
       async (config) => {
         const token = await SsoService.refreshToken()
@@ -25,7 +23,7 @@ export default {
 
     axios.interceptors.response.use(
       undefined,
-      async (error) => await this.errorHandler(error),
+      async (error) => await this.errorHandler(error, vueRouter),
     )
   },
   setAuthorizationSharedTokenHeader(accessToken) {
