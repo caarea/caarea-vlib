@@ -4,10 +4,10 @@ import es from "./es"
 import ko from "./ko"
 
 export const caareaVlibI18n = {
-  en: en,
-  fr: fr,
-  es: es,
-  ko: ko,
+  en: { caareavlib: en },
+  fr: { caareavlib: fr },
+  es: { caareavlib: es },
+  ko: { caareavlib: ko },
 }
 
 export { default as caareaVlibI18nNumberFormats } from "./numberFormats"

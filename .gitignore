@@ -159,3 +159,4 @@ yarn-error.log
 
 # tests
 .donotcommit_tmp
+dist

@@ -1,6 +1,7 @@
 // todofsc: comprendre pourquoi le export default ne fonctionne pas
 // export { default as AbstractService } from "./AbstractService"
 export { default as BeneficiaryCriteriaService } from "./business/BeneficiaryCriteriaService"
+export { Criteria as CriteriaBaseService } from "./business/CriteriaService"
 export { default as CriteriaService } from "./business/CriteriaService"
 export { default as CurrencyService } from "./business/CurrencyService"
 export {

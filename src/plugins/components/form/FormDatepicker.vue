@@ -11,7 +11,7 @@ const languages = { en: enGB, es, fr, ko }
 const i18n = inject("i18n")
 const props = defineProps({
   ...commonProps,
-  modelValue: { type: [Number, String] },
+  modelValue: { type: [Number, String, Date] },
   lang: { type: String, default: "fr" },
   dateFormat: { type: String },
   disableDatesLower: { type: Date },

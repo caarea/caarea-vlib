@@ -1,4 +1,4 @@
-class AbstractService {
+export default class AbstractService {
   constructor() {
     if (this.constructor === AbstractService) {
       throw new TypeError(
@@ -22,5 +22,3 @@ class AbstractService {
     throw Error("Service should be initialized first")
   }
 }
-
-export default AbstractService

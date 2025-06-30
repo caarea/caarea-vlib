@@ -6,18 +6,23 @@ class SsoUtils extends AbstractService {
     super()
     this.clear()
   }
+  initialize(url, realm, clientId) {
+    this._url = url
+    this._realm = realm
+    this._clientId = clientId
+  }
+  isInitialized() {
+    return this._url !== undefined
+  }
   clear() {
     this._keycloakAuth = null
   }
   _initSsoClient() {
     if (!this._keycloakAuth) {
       this._keycloakAuth = new Keycloak({
-        url: import.meta.env.VITE_SSO_URL,
-        realm: import.meta.env.VITE_SSO_REALM,
-        clientId: import.meta.env.VITE_SSO_CLIENT_ID,
-        // url: import.meta.env.VITE_SSO_URL,
-        // realm: import.meta.env.VITE_SSO_REALM,
-        // clientId: import.meta.env.VITE_SSO_CLIENT_ID,
+        url: this._url,
+        realm: this._realm,
+        clientId: this._clientId,
       })
     }
   }
@@ -25,6 +30,7 @@ class SsoUtils extends AbstractService {
     return this._keycloakAuth && this._keycloakAuth.authenticated
   }
   async init(context, callbackSuccess, callbackError) {
+    this.checkIsInitialized()
     this._initSsoClient()
     try {
       // console.log("init sso", window.Cypress)
@@ -63,8 +69,7 @@ class SsoUtils extends AbstractService {
         //     " seconds"
         // )
       }
-      // eslint-disable-next-line no-unused-vars
-    } catch (e) {
+    } catch (error) {
       console.error("Failed to refresh token")
     }
     return this._keycloakAuth.token
@@ -77,5 +82,48 @@ class SsoUtils extends AbstractService {
   }
 }
 
-let SsoService = new SsoUtils()
+class FakeSsoUtils extends AbstractService {
+  constructor() {
+    super()
+    this.fake_token = "fake-token"
+    this.is_authenticated = false
+  }
+
+  initialize(url, realm, clientId) {
+    this._url = url
+  }
+
+  isAuthenticated() {
+    return this.is_authenticated
+  }
+
+  async init(context, callbackSuccess, callbackError) {
+    try {
+      this.is_authenticated = true
+      if (this.is_authenticated) {
+        return await callbackSuccess(context)
+      } else {
+        window.location.reload()
+      }
+    } catch (error) {
+      console.error("Fake Sso failed", error)
+      return await callbackError(context, error)
+    }
+  }
+
+  async refreshToken() {
+    if (!this._keycloakAuth || !this.isAuthenticated()) {
+      // console.log("refreshToken no auth so no need to refresh")
+      return null
+    }
+    return this.fake_token
+  }
+
+  async logout() {
+    console.log("Fake logout")
+    this.is_authenticated = false
+  }
+}
+
+const SsoService = !window.Cypress ? new SsoUtils() : new FakeSsoUtils()
 export default SsoService

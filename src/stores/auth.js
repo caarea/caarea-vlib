@@ -83,8 +83,8 @@ const getters = {
   isSharingTokenExists: (state) => (token) =>
     state.sharing_token && state.sharing_token === token,
   getCurrentUser: (state) => state.current_user,
-  getCurrentUserGroupId: (state) => state.current_user.group.id,
-  areCookiesAccepted: (state) => state.current_user.profile.accepted_cookies,
+  getCurrentUserGroupId: (state) => state.current_user?.group?.id,
+  areCookiesAccepted: (state) => state.current_user?.profile?.accepted_cookies,
   getRouteName: (state) => (routeName) =>
     state.sharing_token ? `shared_${routeName}` : routeName,
   hasSharingToken: (state) => state.sharing_token !== null,

@@ -16,7 +16,7 @@ const mutations = {
         "You should initialize i18n with 'dispatch(\"config/initI18n\")' first",
       )
     }
-    state.i18n.global.locale.value = lang
+    state.i18n.global.locale = lang
   },
   SET_I18N: (state, i18n) => {
     state.i18n = i18n
