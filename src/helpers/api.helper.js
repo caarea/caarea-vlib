@@ -12,13 +12,13 @@ const apiCall = async (method, url, params = null) => {
     console.log("apiCall response", response)
     return response
   } catch (e) {
-    if (e.response.status === 422) {
+    if (e.response?.status === 422) {
       const errors = e.response.data
       console.warn("validations error", errors)
       throw new ValidationError("Validation error", errors)
     }
 
-    if (e.response.status === 409) {
+    if (e.response?.status === 409) {
       throw new AlreadyExistsError(e.response.data)
     }
 
@@ -43,4 +43,8 @@ const apiPatch = async (url, params) => {
   return await apiCall("patch", url, params)
 }
 
-export { apiGet, apiPost, apiPut, apiPatch }
+const apiDelete = async (url, params) => {
+  return await apiCall("delete", url, params)
+}
+
+export { apiGet, apiPost, apiPut, apiPatch, apiDelete }

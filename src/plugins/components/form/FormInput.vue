@@ -1,37 +1,3 @@
-<template>
-  <div :class="hasClearButton ? 'input-group d-flex align-items-center' : ''">
-    <input
-      :id="getId"
-      :ref="inputRefName"
-      v-model="internalModel"
-      :name="name"
-      :placeholder="placeholder"
-      :class="[{ 'is-invalid': error }, inputClass]"
-      class="padding-space"
-      :type="type"
-      :maxlength="maxLength"
-      :data-cy="`input-${name}`"
-      :disabled="disabled"
-      :min="min"
-      :max="max"
-      style="height: 44px"
-      @keyup.enter="$emit('keyboard-enter', $event.target.value)"
-      v-focus
-    />
-    <div v-if="hasClearButton && model.value" class="input-group-append">
-      <button class="btn btn-icon font-size-22 text-secondary">
-        <i class="icon-cross" aria-hidden="true"></i>
-      </button>
-    </div>
-    <small v-if="help && !hasError" :class="helperClass">
-      {{ help }}
-    </small>
-    <div v-if="hasError" class="invalid-feedback text-left" :data-cy="name + '-error'">
-      {{ error }}
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { watch, toRef, onMounted, useTemplateRef, ref } from "vue"
 import { useFormCommon } from "./composables/formCommon.js"
@@ -80,6 +46,40 @@ const vFocus = {
   },
 }
 </script>
+
+<template>
+  <div :class="hasClearButton ? 'input-group d-flex align-items-center' : ''">
+    <input
+      :id="getId"
+      :ref="inputRefName"
+      v-model="internalModel"
+      :name="name"
+      :placeholder="placeholder"
+      :class="[{ 'is-invalid': error }, inputClass]"
+      class="padding-space"
+      :type="type"
+      :maxlength="maxLength"
+      :data-cy="`input-${name}`"
+      :disabled="disabled"
+      :min="min"
+      :max="max"
+      style="height: 44px"
+      @keyup.enter="$emit('keyboard-enter', $event.target.value)"
+      v-focus
+    />
+    <div v-if="hasClearButton && model.value" class="input-group-append">
+      <button class="btn btn-icon font-size-22 text-secondary">
+        <i class="icon-cross" aria-hidden="true"></i>
+      </button>
+    </div>
+    <small v-if="help && !hasError" :class="helperClass">
+      {{ help }}
+    </small>
+    <div v-if="hasError" class="invalid-feedback text-left" :data-cy="name + '-error'">
+      {{ error }}
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 .is-invalid {

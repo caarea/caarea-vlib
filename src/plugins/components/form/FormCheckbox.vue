@@ -1,40 +1,50 @@
+<script setup>
+import { computed, toRef } from "vue"
+import { commonProps } from "src/plugins/components/form/_commonProps.js"
+import { useFormCommon } from "src/plugins/components/form/composables/formCommon.js"
+
+// Refs
+
+// Props
+const props = defineProps({
+  ...commonProps,
+  modelValue: { type: Boolean, required: true },
+  inline: { type: Boolean, default: false },
+  switch: { type: Boolean, default: false },
+})
+
+// Emits
+defineEmits(["update:modelValue"])
+
+const { getId, inputRefName } = useFormCommon(
+  toRef(props, "name"),
+  toRef(props, "errors"),
+)
+</script>
+
 <template>
-  <div class="custom-control custom-checkbox">
+  <div
+    class="custom-control custom-checkbox"
+    :class="{
+      'custom-control-inline': props.inline,
+      'custom-switch': props.switch,
+      'custom-checkbox': !props.switch,
+    }"
+  >
     <input
+      :ref="inputRefName"
       :id="getId"
       type="checkbox"
       :class="['custom-control-input', { 'mouse-pointer': !disabled }]"
+      class="form-control-lg"
       :checked="modelValue"
       :disabled="disabled"
-      :data-cy="getId + '-checkbox'"
+      :data-cy="name + '-checkbox'"
+      @change="$emit('update:modelValue', $event.target.checked)"
     />
     <label class="custom-control-label" :for="getId">{{ label }}</label>
   </div>
 </template>
-
-<script>
-import FormElementMixin from "../mixins/FormElementMixin"
-
-export default {
-  name: "FormCheckbox",
-  mixins: [FormElementMixin],
-  props: {
-    modelValue: { Type: Boolean, required: true },
-    disabled: { Type: Boolean, default: false },
-  },
-  emits: ["update:modelValue"],
-  computed: {
-    value: {
-      get() {
-        return this.modelValue
-      },
-      set(value) {
-        this.$emit("update:modelValue", value)
-      },
-    },
-  },
-}
-</script>
 
 <style lang="scss">
 input[type="checkbox"]:disabled ~ label::before {

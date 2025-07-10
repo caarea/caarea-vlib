@@ -17,17 +17,6 @@ class Http extends AbstractService {
    * @param options
    * @returns {Promise<unknown>}
    */
-  // get(url, options = {}) {
-  //   return new Promise(async (successCallback, failureCallback) => {
-  //     try {
-  //       const response = await axios.get(url, options)
-  //       successCallback(response.data)
-  //     } catch (e) {
-  //       failureCallback(e.response ? new HttpError(e, e.response) : e)
-  //     }
-  //   })
-  // }
-
   get(url, options = {}) {
     return axios
       .get(url, options)
@@ -44,17 +33,6 @@ class Http extends AbstractService {
    * @param options
    * @returns {Promise<unknown>}
    */
-  // post(url, data, options = {}) {
-  //   return new Promise(async (successCallback, failureCallback) => {
-  //     try {
-  //       const response = await axios.post(url, data, options)
-  //       successCallback(response.data)
-  //     } catch (e) {
-  //       failureCallback(e.response ? new HttpError(e, e.response) : e)
-  //     }
-  //   })
-  // }
-
   post(url, data, options = {}) {
     return axios
       .post(url, data, options)
@@ -70,19 +48,24 @@ class Http extends AbstractService {
    * @param data
    * @returns {Promise<unknown>}
    */
-  // put(url, data) {
-  //   return new Promise(async (successCallback, failureCallback) => {
-  //     try {
-  //       const response = await axios.put(url, data)
-  //       successCallback(response.data)
-  //     } catch (e) {
-  //       failureCallback(e.response ? new HttpError(e, e.response) : e)
-  //     }
-  //   })
-  // }
   put(url, data, options = {}) {
     return axios
       .put(url, data, options)
+      .then((response) => response.data)
+      .catch((e) => {
+        throw e.response ? new HttpError(e, e.response) : e
+      })
+  }
+
+  /**
+   * patch data to url
+   * @param url
+   * @param data
+   * @returns {Promise<unknown>}
+   */
+  patch(url, data, options = {}) {
+    return axios
+      .patch(url, data, options)
       .then((response) => response.data)
       .catch((e) => {
         throw e.response ? new HttpError(e, e.response) : e
@@ -95,16 +78,6 @@ class Http extends AbstractService {
    * @param data
    * @returns {Promise<unknown>}
    */
-  // delete(url, data) {
-  //   return new Promise(async (successCallback, failureCallback) => {
-  //     try {
-  //       const response = await axios.delete(url, data)
-  //       successCallback(response.data)
-  //     } catch (e) {
-  //       failureCallback(e.response ? new HttpError(e, e.response) : e)
-  //     }
-  //   })
-  // }
   delete(url, data, options = {}) {
     return axios
       .delete(url, data, options)
