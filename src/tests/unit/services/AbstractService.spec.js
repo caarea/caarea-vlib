@@ -2,6 +2,7 @@ import AbstractService from "../../../services/AbstractService"
 import DummyService1 from "../../fixtures/datasets/services/dummy.service"
 import DummyService2 from "../../fixtures/datasets/services/dummy.service"
 import { describe, expect, it } from "vitest"
+
 describe("AbstractService", () => {
   it("should not be able to be instantiate directly", () => {
     expect(() => new AbstractService()).toThrowError(

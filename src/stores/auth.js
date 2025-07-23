@@ -1,5 +1,5 @@
 // STATES (snake_case)
-import { HttpService, UrlService, GroupService, SsoService } from "../services"
+import { GroupService, HttpService, SsoService, UrlService } from "../services"
 import { AxiosHelper } from "../helpers"
 
 const state = {

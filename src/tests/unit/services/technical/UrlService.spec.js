@@ -1,5 +1,6 @@
 import { UrlService } from "../../../../services"
-import { describe, expect, beforeAll, test } from "vitest"
+import { beforeAll, describe, expect, test } from "vitest"
+
 const urls = {
   url1: "/uri/one",
   url2: "/uri/two",

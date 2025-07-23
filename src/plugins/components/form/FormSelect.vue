@@ -30,11 +30,11 @@
 </template>
 
 <script setup>
-import { computed, toRef } from "vue"
+import { computed, inject, toRef } from "vue"
 import Multiselect from "vue-multiselect"
 import { useFormCommon } from "./composables/formCommon.js"
 import { commonProps } from "./_commonProps"
-import { inject } from "vue"
+
 const props = defineProps({
   ...commonProps,
   selectOptions: Object,

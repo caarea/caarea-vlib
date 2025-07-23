@@ -1,8 +1,14 @@
 import { BeneficiaryCriteriaService } from "../../../../services"
 import { describe, expect, it } from "vitest"
-import i18n from "../../../../i18n"
+import { caareaVlibI18n, caareaVlibI18nNumberFormats } from "../../../../i18n"
+import { createI18n } from "vue-i18n"
 
-BeneficiaryCriteriaService.setI18n(i18n.global.t)
+const i18n = createI18n({
+  locale: "fr",
+  messages: caareaVlibI18n,
+  numberFormats: caareaVlibI18nNumberFormats,
+})
+BeneficiaryCriteriaService.setI18n(i18n.global)
 
 describe("Beneficiary Criteria Service", () => {
   describe("hasCoverageCriteria", () => {

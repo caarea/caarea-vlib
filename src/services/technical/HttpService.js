@@ -1,5 +1,6 @@
 import AbstractService from "../AbstractService"
 import axios from "axios"
+import { saveAs } from "file-saver"
 
 class HttpError extends Error {
   constructor(message, response) {
@@ -82,6 +83,29 @@ class Http extends AbstractService {
     return axios
       .delete(url, data, options)
       .then((response) => response.data)
+      .catch((e) => {
+        throw e.response ? new HttpError(e, e.response) : e
+      })
+  }
+
+  /**
+   * download file
+   * ajouter CORS_EXPOSE_HEADERS = ("Content-Disposition",)
+   * @param url
+   * @param data
+   * @param method
+   * @returns {Promise<unknown>}
+   */
+  download(url, data = null, method = "get") {
+    const params = { method, url, data, responseType: "blob" }
+
+    return axios(params)
+      .then((response) => {
+        const contentDisposition = response.headers["content-disposition"]
+        const fileNameMatch = contentDisposition.match(/filename="(.+)"/)
+        const filename = fileNameMatch[1]
+        saveAs(response.data, filename)
+      })
       .catch((e) => {
         throw e.response ? new HttpError(e, e.response) : e
       })

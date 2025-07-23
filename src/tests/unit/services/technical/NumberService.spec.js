@@ -1,5 +1,6 @@
 import { NumberService } from "../../../../services"
 import { describe, expect, it } from "vitest"
+
 describe("NumberService", () => {
   /**
    * title

@@ -1,15 +1,22 @@
 import { PricingService } from "../../../../services"
-import i18n from "../../../../i18n"
-import { describe, it, expect, beforeEach } from "vitest"
+import { caareaVlibI18nNumberFormats } from "../../../../i18n"
+import { describe, expect, it } from "vitest"
+import { createI18n } from "vue-i18n"
+
 describe("PricingService", () => {
   describe("getFormattedPriceToDisplay", () => {
     describe("fr locale", () => {
-      beforeEach(() => {
-        i18n.globallocale = "fr"
+      beforeAll(() => {
+        const i18n = createI18n({
+          locale: "fr",
+          numberFormats: caareaVlibI18nNumberFormats,
+        })
+        PricingService.setI18n(i18n.global)
       })
       // Note : i18n uses a NBSP character (Non-Breaking Space) instead of a space character,
       // so we need to use it when comparing strings
       it("should return price with no decimals when payment frequency is not specified", () => {
+        expect(PricingService.getFormattedPriceToDisplay(856)).toStrictEqual("856 €")
         expect(PricingService.getFormattedPriceToDisplay(856)).toStrictEqual("856 €")
         expect(PricingService.getFormattedPriceToDisplay(856.12)).toStrictEqual("856 €")
       })
@@ -33,8 +40,12 @@ describe("PricingService", () => {
       })
     })
     describe("en locale", () => {
-      beforeEach(() => {
-        i18n.global.locale.value = "en"
+      beforeAll(() => {
+        const i18n = createI18n({
+          locale: "en",
+          numberFormats: caareaVlibI18nNumberFormats,
+        })
+        PricingService.setI18n(i18n.global)
       })
       it("should return price with no decimals when payment frequency is not specified", () => {
         expect(PricingService.getFormattedPriceToDisplay(856)).toStrictEqual("€856")

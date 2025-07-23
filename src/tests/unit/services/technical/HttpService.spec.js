@@ -1,4 +1,4 @@
-import { HttpService, HttpError } from "../../../../services"
+import { HttpError, HttpService } from "../../../../services"
 import { describe, expect, it } from "vitest"
 
 function assertHttpErrorExceptionThrown(exception, status) {

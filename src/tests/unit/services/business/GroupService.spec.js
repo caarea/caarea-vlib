@@ -1,5 +1,6 @@
 import { GroupService } from "../../../../services"
-import { describe, it, expect } from "vitest"
+import { describe, expect, it } from "vitest"
+
 describe("Group Service", () => {
   it("should return internal_admin code on id 1", () => {
     expect(GroupService.getCodeById(GroupService.INTERNAL_ADMIN)).toBe("internal_admin")

@@ -125,5 +125,19 @@ class FakeSsoUtils extends AbstractService {
   }
 }
 
-const SsoService = !window.Cypress ? new SsoUtils() : new FakeSsoUtils()
+function getSsoService() {
+  let isCypress = false
+  try {
+    window
+    isCypress = window.Cypress
+  } catch (e) {
+    isCypress = false
+  }
+  if (isCypress) {
+    return new FakeSsoUtils()
+  }
+  return new SsoUtils()
+}
+
+const SsoService = getSsoService()
 export default SsoService

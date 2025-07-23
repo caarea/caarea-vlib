@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
-import { ref, computed } from "vue"
-import { HttpService, UrlService, GroupService, SsoService } from "../../services"
+import { computed, ref } from "vue"
+import { GroupService, HttpService, SsoService, UrlService } from "../../services"
 import { AxiosHelper } from "../../helpers"
 
 export const useAuthStore = defineStore("auth", () => {

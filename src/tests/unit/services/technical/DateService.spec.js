@@ -1,6 +1,7 @@
 import { DateService } from "../../../../services"
-import TestHelper from "../../../TestHelper"
-import { describe, expect, it, beforeAll } from "vitest"
+import { beforeAll, describe, expect, it } from "vitest"
+import TestHelper from "src/helpers/test.helper.js"
+
 describe("DateService", () => {
   beforeAll(() => {
     TestHelper.mockDateNow("2021-01-20T10:20:30Z")

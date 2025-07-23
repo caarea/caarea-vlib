@@ -1,14 +1,14 @@
 import { default as HttpService } from "../services/technical/HttpService"
 import { AlreadyExistsError, ValidationError } from "src/exceptions.js"
 
-const apiCall = async (method, url, params = null) => {
-  console.log("apiCall", method, url, params)
+const apiCall = async (method, url, params = null, options = {}) => {
+  console.log("apiCall", method, url, params, options)
   params = params || {}
   try {
     const response =
       method !== "get"
-        ? await HttpService[method](url, params)
-        : await HttpService[method](url, { params })
+        ? await HttpService[method](url, params, options)
+        : await HttpService[method](url, options)
     console.log("apiCall response", response)
     return response
   } catch (e) {
@@ -27,24 +27,33 @@ const apiCall = async (method, url, params = null) => {
   }
 }
 
-const apiGet = async (url) => {
-  return await apiCall("get", url)
+const apiGet = async (url, options = {}) => {
+  return await apiCall("get", url, null, options)
 }
 
-const apiPost = async (url, params) => {
+const apiPost = async (url, params, options = {}) => {
+  console.log("apiPost", url, params, options)
   return await apiCall("post", url, params)
 }
 
-const apiPut = async (url, params) => {
-  return await apiCall("put", url, params)
+const apiPut = async (url, params, options = {}) => {
+  return await apiCall("put", url, params, options)
 }
 
-const apiPatch = async (url, params) => {
-  return await apiCall("patch", url, params)
+const apiPatch = async (url, params, options = {}) => {
+  return await apiCall("patch", url, params, options)
 }
 
-const apiDelete = async (url, params) => {
-  return await apiCall("delete", url, params)
+const apiDelete = async (url, params, options = {}) => {
+  return await apiCall("delete", url, params, options)
 }
 
-export { apiGet, apiPost, apiPut, apiPatch, apiDelete }
+const apiGetDownload = async (url, params) => {
+  return await apiCall("download", url, params, "get")
+}
+
+const apiPostDownload = async (url, params) => {
+  return await apiCall("download", url, params, "post")
+}
+
+export { apiGet, apiPost, apiPut, apiPatch, apiDelete, apiGetDownload, apiPostDownload }

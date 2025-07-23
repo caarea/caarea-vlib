@@ -1,4 +1,5 @@
 import AbstractService from "../../../../services/AbstractService"
+
 class DummyService extends AbstractService {
   constructor() {
     super()

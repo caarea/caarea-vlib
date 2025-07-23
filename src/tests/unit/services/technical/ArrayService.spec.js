@@ -1,5 +1,6 @@
 import { ArrayService } from "../../../../services"
 import { describe, expect, it } from "vitest"
+
 describe("ArrayService", () => {
   describe("isArray", () => {
     it("should return false is value is not an array", () => {

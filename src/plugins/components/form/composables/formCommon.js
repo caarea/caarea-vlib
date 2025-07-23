@@ -1,4 +1,5 @@
 import { computed } from "vue"
+
 export function useFormCommon(eltName, formErrors) {
   const getId = computed(() => "id-" + eltName.value)
   const inputRefName = computed(() => `input-${eltName.value}`)
