@@ -80,8 +80,8 @@ class Http extends AbstractService {
    * @returns {Promise<unknown>}
    */
   delete(url, data, options = {}) {
-    return axios
-      .delete(url, data, options)
+    const params = { method: "delete", url: url, data: data, options }
+    return axios(params)
       .then((response) => response.data)
       .catch((e) => {
         throw e.response ? new HttpError(e, e.response) : e

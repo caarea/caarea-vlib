@@ -2,6 +2,7 @@ import CaareaVlibPlugin from "./plugins"
 import AbstractService from "./services/AbstractService"
 
 export { CaareaVlibPlugin }
+export * from "./composables"
 export * from "./helpers"
 export * from "./services"
 export * from "./mixins"

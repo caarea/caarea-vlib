@@ -1,13 +1,13 @@
 import { default as HttpService } from "../services/technical/HttpService"
 import { AlreadyExistsError, ValidationError } from "src/exceptions.js"
 
-const apiCall = async (method, url, params = null, options = {}) => {
-  console.log("apiCall", method, url, params, options)
-  params = params || {}
+const apiCall = async (method, url, data = null, options = {}) => {
+  console.log("apiCall", method, url, data, options)
+  data = data || {}
   try {
     const response =
       method !== "get"
-        ? await HttpService[method](url, params, options)
+        ? await HttpService[method](url, data, options)
         : await HttpService[method](url, options)
     console.log("apiCall response", response)
     return response
@@ -32,8 +32,7 @@ const apiGet = async (url, options = {}) => {
 }
 
 const apiPost = async (url, params, options = {}) => {
-  console.log("apiPost", url, params, options)
-  return await apiCall("post", url, params)
+  return await apiCall("post", url, params, options)
 }
 
 const apiPut = async (url, params, options = {}) => {

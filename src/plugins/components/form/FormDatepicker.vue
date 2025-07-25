@@ -56,12 +56,11 @@ const onUpdateModelValue = (newVal) => {
 </script>
 
 <template>
-  <div :data-cy="getDataCy">
+  <div :data-cy="getDataCy" class="date-picker">
     <datepicker
       :id="getInputId"
       :model-value="dateInput"
       class="date-picker-input form-control"
-      input-class="form-control"
       :locale="language"
       :week-starts-on="isMondayFirst ? 1 : 0"
       :input-format="inputDateFormat"

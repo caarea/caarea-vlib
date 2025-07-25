@@ -1,3 +1,4 @@
+// options api version : voir aussi composition api version dans composables/image.js
 export default {
   methods: {
     transformImage(imageUrl, transform) {
