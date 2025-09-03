@@ -20,7 +20,8 @@
       :focus="focus"
       :required="required"
       :disabled="disabled"
-      @keyboard-enter="$emit('keyboard-enter', $event)"
+      @keyboard-enter="emit('keyboard-enter', $event)"
+      @debounce:update="onDebounceUpdate"
     ></FormInput>
   </FormRow>
 </template>
@@ -40,7 +41,11 @@ const props = defineProps({
   debounceInput: { type: Boolean, default: false },
   debounceDelay: { type: Number, default: 500 },
 })
-defineEmits(["update:modelValue"])
+const emit = defineEmits(["update:modelValue", "debounce:update"])
 const model = defineModel()
 const { getId } = useFormCommon(toRef(props, "name"), toRef(props, "errors"))
+
+function onDebounceUpdate(newVal) {
+  emit("debounce:update", newVal)
+}
 </script>

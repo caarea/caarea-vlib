@@ -2,13 +2,12 @@
 // FormDatepicker
 
 import { commonProps } from "./_commonProps"
-import { computed, inject, ref } from "vue"
+import { computed, inject, ref, toRef } from "vue"
 import { enGB, es, fr, ko } from "date-fns/locale"
 import { format } from "date-fns"
 import datepicker from "vue3-datepicker"
+import { useFormCommon } from "./composables/formCommon.js"
 
-const languages = { en: enGB, es, fr, ko }
-const i18n = inject("i18n")
 const props = defineProps({
   ...commonProps,
   modelValue: { type: [Number, String, Date] },
@@ -16,7 +15,16 @@ const props = defineProps({
   dateFormat: { type: String },
   disableDatesLower: { type: Date },
   disableDatesUpper: { type: Date },
+  errors: {
+    type: Object,
+    default: () => {
+      /* intentional */
+    },
+  },
 })
+const languages = { en: enGB, es, fr, ko }
+const { hasError, error } = useFormCommon(toRef(props, "name"), toRef(props, "errors"))
+const i18n = inject("i18n")
 const dateInput = ref(props.modelValue ? new Date(props.modelValue) : null)
 const language = computed(() => languages[props.lang])
 const inputDateFormat = computed(() => {
@@ -56,18 +64,28 @@ const onUpdateModelValue = (newVal) => {
 </script>
 
 <template>
-  <div :data-cy="getDataCy" class="date-picker">
-    <datepicker
-      :id="getInputId"
-      :model-value="dateInput"
-      class="date-picker-input form-control"
-      :locale="language"
-      :week-starts-on="isMondayFirst ? 1 : 0"
-      :input-format="inputDateFormat"
-      :lower-limit="lowerLimit"
-      :upper-limit="upperLimit"
-      @update:modelValue="onUpdateModelValue"
-    ></datepicker>
+  <div>
+    <div
+      :data-cy="getDataCy"
+      class="date-picker input-group"
+      :class="{ 'is-invalid': hasError }"
+    >
+      <datepicker
+        :id="getInputId"
+        :model-value="dateInput"
+        class="date-picker-input form-control"
+        :class="{ 'is-invalid': hasError }"
+        :locale="language"
+        :week-starts-on="isMondayFirst ? 1 : 0"
+        :input-format="inputDateFormat"
+        :lower-limit="lowerLimit"
+        :upper-limit="upperLimit"
+        @update:modelValue="onUpdateModelValue"
+      ></datepicker>
+    </div>
+    <div v-if="hasError" class="invalid-feedback" :data-cy="name + '-error'">
+      {{ error }}
+    </div>
   </div>
 </template>
 

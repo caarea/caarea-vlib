@@ -36,20 +36,27 @@ const props = defineProps({
 const internalModel = ref(props.modelValue)
 // const model = defineModel()
 
-const emit = defineEmits("update:modelValue")
+const emit = defineEmits(["update:modelValue", "debounce:update"])
 
 const { getId } = useFormCommon(toRef(props, "name"), toRef(props, "errors"))
 
 watch(internalModel, (newVal) => {
   props.debounceInput ? updateDebounceModel(newVal) : updateModel(newVal)
 })
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    internalModel.value = newVal
+  },
+)
 
 const updateModel = (newVal) => {
   emit("update:modelValue", newVal)
 }
 
 const updateDebounceModel = _debounce((newVal) => {
-  emit("update:modelValue", newVal)
+  updateModel(newVal)
+  emit("debounce:update", newVal)
 }, props.debounceDelay)
 </script>
 

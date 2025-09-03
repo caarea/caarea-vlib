@@ -21,7 +21,7 @@ const props = defineProps({
 const internalModel = ref(props.modelValue)
 // const model = defineModel()
 
-const emit = defineEmits(["keyboard-enter", "update:modelValue"])
+const emit = defineEmits(["keyboard-enter", "update:modelValue", "debounce:update"])
 
 const { getId, hasError, inputRefName, error } = useFormCommon(
   toRef(props, "name"),
@@ -32,12 +32,20 @@ watch(internalModel, (newVal) => {
   props.debounceInput ? updateDebounceModel(newVal) : updateModel(newVal)
 })
 
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    internalModel.value = newVal
+  },
+)
+
 const updateModel = (newVal) => {
   emit("update:modelValue", newVal)
 }
 
 const updateDebounceModel = _debounce((newVal) => {
-  emit("update:modelValue", newVal)
+  updateModel(newVal)
+  emit("debounce:update", newVal)
 }, props.debounceDelay)
 
 const vFocus = {

@@ -1,3 +1,5 @@
+// 400
+export class BadRequestError extends Error {}
 // 419
 export class AlreadyExistsError extends Error {}
 // 422

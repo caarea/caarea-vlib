@@ -8,5 +8,6 @@ export * from "./services"
 export * from "./mixins"
 export * from "./stores"
 export * from "./i18n"
+export * from "./tests"
 export { ValidationError, AlreadyExistsError } from "./exceptions"
 export { AbstractService }
