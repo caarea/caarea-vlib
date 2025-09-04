@@ -1,5 +1,6 @@
 <script setup>
 // FormDatepicker
+// https://icehaunter.github.io/vue3-datepicker/
 
 import { commonProps } from "./_commonProps"
 import { computed, inject, ref, toRef } from "vue"
@@ -15,6 +16,8 @@ const props = defineProps({
   dateFormat: { type: String },
   disableDatesLower: { type: Date },
   disableDatesUpper: { type: Date },
+  // View on which the date picker should open: 'time' | 'day' | 'month' | 'year'
+  startingView: { type: String, default: "day" },
   errors: {
     type: Object,
     default: () => {
@@ -80,6 +83,7 @@ const onUpdateModelValue = (newVal) => {
         :input-format="inputDateFormat"
         :lower-limit="lowerLimit"
         :upper-limit="upperLimit"
+        :starting-view="startingView"
         @update:modelValue="onUpdateModelValue"
       ></datepicker>
     </div>
