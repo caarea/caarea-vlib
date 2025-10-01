@@ -9,8 +9,10 @@ const apiCall = async (method, url, data = null, options = {}) => {
       method !== "get"
         ? await HttpService[method](url, data, options)
         : await HttpService[method](url, options)
-    console.log("apiCall response", response)
-    return response
+    if (method !== "download") {
+      console.log("apiCall response", response)
+      return response
+    }
   } catch (e) {
     if (e.response?.status === 422) {
       const errors = e.response.data

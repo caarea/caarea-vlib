@@ -27,6 +27,7 @@
 </template>
 
 <script setup>
+defineOptions({ name: "FormRowSelect" })
 import { toRef } from "vue"
 import { FormRow, FormSelect } from "./index.js"
 import { useFormCommon } from "./composables/formCommon.js"

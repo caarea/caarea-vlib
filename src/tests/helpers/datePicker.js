@@ -15,9 +15,8 @@ export default {
     this.getInput(name).click()
   },
   getDate(name) {
-    return this.getInput(name)
-      .invoke("val")
-      .then((date) => {})
+    return this.getInput(name).invoke("val")
+    //yarn b.then((date) => {})
   },
   assertSelectedDateIsNotEmpty(name) {
     this.getDate(name).then((date) => {
@@ -45,5 +44,14 @@ export default {
     // Choose a day
     cy.get('button[class*="element__button__day"]:nth-child(18)').click()
     return this.getDate(name)
+  },
+  selectYear(year) {
+    cy.get(`button[class*="element__button__year"]:nth-child(${year})`).click()
+  },
+  selectMonth(month) {
+    cy.get(`button[class*="element__button__month"]:nth-child(${month})`).click()
+  },
+  selectDay(day) {
+    cy.get(`button[class*="element__button__day"]:nth-child(${day})`).click()
   },
 }

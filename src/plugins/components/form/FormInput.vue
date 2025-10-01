@@ -1,4 +1,5 @@
 <script setup>
+defineOptions({ name: "FormInput" })
 import { ref, toRef, watch } from "vue"
 import { useFormCommon } from "./composables/formCommon.js"
 import { commonProps } from "./_commonProps"

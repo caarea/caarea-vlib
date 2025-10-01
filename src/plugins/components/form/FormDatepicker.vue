@@ -1,4 +1,5 @@
 <script setup>
+defineOptions({ name: "FormDatepicker" })
 // FormDatepicker
 // https://icehaunter.github.io/vue3-datepicker/
 

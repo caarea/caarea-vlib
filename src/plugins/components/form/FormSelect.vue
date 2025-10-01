@@ -30,6 +30,7 @@
 </template>
 
 <script setup>
+defineOptions({ name: "FormSelect" })
 import { computed, inject, toRef } from "vue"
 import Multiselect from "vue-multiselect"
 import { useFormCommon } from "./composables/formCommon.js"

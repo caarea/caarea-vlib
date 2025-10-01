@@ -49,6 +49,7 @@
 </template>
 
 <script setup>
+defineOptions({ name: "FormVehicleFilters" })
 import { inject } from "vue"
 
 const props = defineProps({

@@ -98,12 +98,12 @@ class Http extends AbstractService {
    */
   download(url, data = null, method = "get") {
     const params = { method, url, data, responseType: "blob" }
-
+    console.log("download", params)
     return axios(params)
       .then((response) => {
         const contentDisposition = response.headers["content-disposition"]
         const fileNameMatch = contentDisposition.match(/filename="(.+)"/)
-        const filename = fileNameMatch[1]
+        const filename = fileNameMatch ? fileNameMatch[1] : "nofilename"
         saveAs(response.data, filename)
       })
       .catch((e) => {

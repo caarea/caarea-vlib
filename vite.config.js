@@ -6,6 +6,11 @@ import vue from "@vitejs/plugin-vue"
 export default defineConfig({
   plugins: [vue()],
   build: {
+    minify: false, // Désactive toute minification JS/CSS
+    terserOptions: {
+      compress: false,
+      mangle: false,
+    },
     lib: {
       entry: "./index.js",
       name: "caarea-vlib",

@@ -27,6 +27,7 @@
 </template>
 
 <script setup>
+defineOptions({ name: "FormRowInput" })
 import FormInput from "./FormInput.vue"
 import FormRow from "./FormRow.vue"
 import { useFormCommon } from "./composables/formCommon.js"

@@ -1,4 +1,5 @@
 <script setup>
+defineOptions({ name: "FormCheckbox" })
 import { toRef } from "vue"
 import { commonProps } from "src/plugins/components/form/_commonProps.js"
 import { useFormCommon } from "src/plugins/components/form/composables/formCommon.js"
@@ -8,7 +9,7 @@ import { useFormCommon } from "src/plugins/components/form/composables/formCommo
 // Props
 const props = defineProps({
   ...commonProps,
-  modelValue: { type: Boolean, required: true },
+  modelValue: { type: Boolean },
   inline: { type: Boolean, default: false },
   switch: { type: Boolean, default: false },
 })
