@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export default {
   _getDataCyLabel(name) {
     return `[data-cy="${name}-select"]`

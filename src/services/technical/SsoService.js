@@ -70,7 +70,7 @@ class SsoUtils extends AbstractService {
         // )
       }
     } catch (error) {
-      console.error("Failed to refresh token")
+      console.error("Failed to refresh token: " + error)
     }
     return this._keycloakAuth.token
   }
@@ -90,6 +90,14 @@ class FakeSsoUtils extends AbstractService {
   }
 
   initialize(url, realm, clientId) {
+    console.log(
+      "FakeSsoService initialize on: ",
+      url,
+      " realm: ",
+      realm,
+      " clientId: ",
+      clientId,
+    )
     this._url = url
   }
 
@@ -126,10 +134,11 @@ class FakeSsoUtils extends AbstractService {
 }
 
 function getSsoService() {
-  let isCypress = false
+  let isCypress
   try {
     window
     isCypress = window.Cypress
+    // eslint-disable-next-line no-unused-vars
   } catch (e) {
     isCypress = false
   }

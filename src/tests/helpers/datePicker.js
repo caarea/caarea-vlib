@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export default {
   sanitize(name) {
     return name.replace(/_/g, "-")

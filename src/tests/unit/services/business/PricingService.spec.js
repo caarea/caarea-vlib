@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { PricingService } from "../../../../services"
 import { caareaVlibI18nNumberFormats } from "../../../../i18n"
 import { describe, expect, it } from "vitest"

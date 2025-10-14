@@ -12,7 +12,7 @@
     <div class="col-2 result-details text-center" data-cy="search-result-item-energy">
       {{
         $filters.capitalize(
-          vehicle.energy ? i18n(`caareavlib.vehicle.search.${vehicle.energy}`) : "--"
+          vehicle.energy ? i18n(`caareavlib.vehicle.search.${vehicle.energy}`) : "--",
         )
       }}
     </div>
@@ -31,7 +31,7 @@
         $filters.capitalize(
           vehicle.transmission
             ? i18n(`caareavlib.vehicle.search.${vehicle.transmission}`)
-            : "--"
+            : "--",
         )
       }}
     </div>
