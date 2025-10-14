@@ -1,5 +1,10 @@
 import { default as HttpService } from "../services/technical/HttpService"
-import { AlreadyExistsError, BadRequestError, ValidationError } from "src/exceptions.js"
+import {
+  AlreadyExistsError,
+  BadRequestError,
+  NotFoundError,
+  ValidationError,
+} from "src/exceptions.js"
 
 const apiCall = async (method, url, data = null, options = {}) => {
   console.log("apiCall", method, url, data, options)
@@ -25,6 +30,9 @@ const apiCall = async (method, url, data = null, options = {}) => {
     }
     if (e.response?.status === 400) {
       throw new BadRequestError(e.response.data)
+    }
+    if (e.response?.status === 404) {
+      throw new NotFoundError(e.response.data)
     }
 
     console.error("failed: ", e)
