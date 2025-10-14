@@ -1,0 +1,17 @@
+
+.invalid-feedback[data-v-86f788cf] {
+  display: block;
+}
+input[type=checkbox]:disabled ~ label::before {
+  border: none;
+}.is-invalid[data-v-a9500c5f] {
+  border-color: #dc3545 !important;
+}input[type=radio]:disabled ~ label::before {
+  border: none;
+}
+.invalid-feedback[data-v-47e527fa] {
+  display: block;
+}
+textarea[data-v-28860bf5] {
+  resize: none;
+}
