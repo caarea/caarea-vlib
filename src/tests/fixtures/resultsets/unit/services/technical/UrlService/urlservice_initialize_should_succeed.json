@@ -1,0 +1,5 @@
+{
+  "url1": "/uri/one",
+  "url2": "/uri/two",
+  "urlWithParams": "uri/{params1}/{params2}/"
+}

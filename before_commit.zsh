@@ -21,6 +21,8 @@ else
 fi
 
 set -e
+echo "### FORMAT"
+yarn format
 echo "### LINT"
 yarn lint
 echo "### BUILD"
