@@ -64,8 +64,9 @@ export default defineConfig({
 })
 ```
 - To stop using the lib as a local dependency : 
-  - in your front project : run `yarn unlink "caarea-vlib"`, then run `yarn install --force` to reinstall the lib. You might have to re-serve your app.
   - in the caarea-vlib project : run `yarn unlink`
+  - in your front project : run `yarn unlink "caarea-vlib"`, then run `yarn install --force` to reinstall the lib. You might have to re-serve your app.
+  - remove the line `optimizeDeps` added previously in vite.config.js
     
 ### Build the lib
 - Run : `yarn build`

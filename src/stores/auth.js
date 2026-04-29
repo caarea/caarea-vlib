@@ -46,21 +46,6 @@ const actions = {
     // console.log("logout done")
     commit("SET_SHARING_TOKEN", token)
   },
-  async acceptCookies({ commit }, userId) {
-    const payload = {
-      accepted_cookies: true,
-    }
-    try {
-      const user = await HttpService.put(
-        UrlService.render("userAcceptCookies", { id: userId }),
-        payload,
-      )
-      commit("SET_CURRENT_USER", user)
-    } catch (e) {
-      console.error("acceptCookies failed: ", e)
-      throw e
-    }
-  },
   async logout({ commit }) {
     commit("RESET_AUTH")
     await SsoService.logout()
@@ -77,19 +62,20 @@ const actions = {
 const getters = {
   isLoggedIn: (state, getters) =>
     (state.sharing_token && getters.isGuestUser) || SsoService.isAuthenticated(),
-  isLoggedInSharingMode: (state, getters) => state.sharing_token && getters.isGuestUser,
+  isLoggedInSharingMode: (state, getters) =>
+    state.sharing_token && getters.isGuestUser && getters.isSharingProgramsEnabled,
   isGuestUser: (state) =>
     state.current_user && state.current_user.group.id === GroupService.GUEST,
   isSharingTokenExists: (state) => (token) =>
     state.sharing_token && state.sharing_token === token,
   getCurrentUser: (state) => state.current_user,
   getCurrentUserGroupId: (state) => state.current_user?.group?.id,
-  areCookiesAccepted: (state) => state.current_user?.profile?.accepted_cookies,
   getRouteName: (state) => (routeName) =>
     state.sharing_token ? `shared_${routeName}` : routeName,
   hasSharingToken: (state) => state.sharing_token !== null,
   getSharingToken: (state) => state.sharing_token,
   getUserLang: (state) => state.current_user.profile.lang,
+  isSharingProgramsEnabled: (state) => state.current_user?.sharing_programs_enabled,
 }
 
 export default {

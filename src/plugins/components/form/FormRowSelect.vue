@@ -37,7 +37,7 @@ const props = defineProps({
   ...commonProps,
   modelValue: [String, Array],
   selectOptions: Object,
-  labelSelectAttr: { type: String, required: true },
+  labelSelectAttr: { type: String },
   labelOptionsOrder: { type: Boolean, default: true },
   isLoading: { type: Boolean, default: false },
   allowEmpty: { type: Boolean, default: false },

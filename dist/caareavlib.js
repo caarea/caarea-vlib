@@ -8533,7 +8533,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign({ name: "FormRowSelect" }, {
     ...commonProps,
     modelValue: [String, Array],
     selectOptions: Object,
-    labelSelectAttr: { type: String, required: true },
+    labelSelectAttr: { type: String },
     labelOptionsOrder: { type: Boolean, default: true },
     isLoading: { type: Boolean, default: false },
     allowEmpty: { type: Boolean, default: false },
@@ -15438,21 +15438,6 @@ const actions$1 = {
     await dispatch("logout");
     commit("SET_SHARING_TOKEN", token);
   },
-  async acceptCookies({ commit }, userId) {
-    const payload = {
-      accepted_cookies: true
-    };
-    try {
-      const user = await HttpService.put(
-        UrlService.render("userAcceptCookies", { id: userId }),
-        payload
-      );
-      commit("SET_CURRENT_USER", user);
-    } catch (e2) {
-      console.error("acceptCookies failed: ", e2);
-      throw e2;
-    }
-  },
   async logout({ commit }) {
     commit("RESET_AUTH");
     await SsoService.logout();
@@ -15466,7 +15451,7 @@ const actions$1 = {
 };
 const getters$1 = {
   isLoggedIn: (state2, getters2) => state2.sharing_token && getters2.isGuestUser || SsoService.isAuthenticated(),
-  isLoggedInSharingMode: (state2, getters2) => state2.sharing_token && getters2.isGuestUser,
+  isLoggedInSharingMode: (state2, getters2) => state2.sharing_token && getters2.isGuestUser && getters2.isSharingProgramsEnabled,
   isGuestUser: (state2) => state2.current_user && state2.current_user.group.id === GroupService.GUEST,
   isSharingTokenExists: (state2) => (token) => state2.sharing_token && state2.sharing_token === token,
   getCurrentUser: (state2) => state2.current_user,
@@ -15474,14 +15459,14 @@ const getters$1 = {
     var _a, _b;
     return (_b = (_a = state2.current_user) == null ? void 0 : _a.group) == null ? void 0 : _b.id;
   },
-  areCookiesAccepted: (state2) => {
-    var _a, _b;
-    return (_b = (_a = state2.current_user) == null ? void 0 : _a.profile) == null ? void 0 : _b.accepted_cookies;
-  },
   getRouteName: (state2) => (routeName) => state2.sharing_token ? `shared_${routeName}` : routeName,
   hasSharingToken: (state2) => state2.sharing_token !== null,
   getSharingToken: (state2) => state2.sharing_token,
-  getUserLang: (state2) => state2.current_user.profile.lang
+  getUserLang: (state2) => state2.current_user.profile.lang,
+  isSharingProgramsEnabled: (state2) => {
+    var _a;
+    return (_a = state2.current_user) == null ? void 0 : _a.sharing_programs_enabled;
+  }
 };
 const auth = {
   namespaced: true,
